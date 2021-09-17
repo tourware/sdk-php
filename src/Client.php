@@ -4,35 +4,35 @@ declare(strict_types=1);
 
 namespace Tourware;
 
-use Sigmie\Http\Auth\BasicAuth;
 use Sigmie\Http\Contracts\JSONClient as JSONClientInterface;
 use Sigmie\Http\JSONClient;
-use Tourware\Contracts\Client as ClientInterface;
-use Tourware\Contracts\QueryBuilder as QueryBuilderInterface;
-use Tourware\QueryBuilder;
+use Tourware\Auth\Authentication;
+use Tourware\Clients\AccomondationsClient;
+use Tourware\Clients\TravelClient;
+use Tourware\Entities\Accomondations;
 
-class Client implements ClientInterface
+class Client
 {
     public function __construct(protected JSONClientInterface $http)
     {
-        // constructor body
     }
 
-    public static function create(string $token, bool $staging = true)
+    public static function create(string $xApiKey, bool $staging = true)
     {
         $url = $staging ? 'https://cloud-staging.typisch-touristik.de' : 'https://cloud.typisch-touristik.de';
 
-        $client = JSONClient::create($url, new Authentication($token));
+        $client = JSONClient::create($url, new Authentication($xApiKey));
 
         return new static($client);
     }
 
-    public function query(string $entity): QueryBuilderInterface
+    public function travels(): TravelClient
     {
-        $builder = new QueryBuilder($this->http);
+        return new TravelClient($this->http);
+    }
 
-        $builder->entity($entity);
-
-        return $builder;
+    public function accomondations(): AccomondationsClient
+    {
+        return new AccomondationsClient($this->http);
     }
 }

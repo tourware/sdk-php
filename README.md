@@ -19,9 +19,24 @@ $ composer require tourware/sdk-php
 
 ## Usage
 
+You should always use Composer autoloader in your application to automatically load your dependencies. All the examples below assume you've already included this in your file:
+
 ``` php
-$skeleton = new Tourware\SDK();
-echo $skeleton->echoPhrase('Hello, League!');
+use Tourware\Client;
+
+require 'vendor/autoload.php';
+```
+
+Here's how to retrieve a **Travel** using the SDK:
+
+```php
+// First, instantiate the SDK with your x-api-key API credentials
+$client = Client::create(xApiKey: 'xxxxxxx-xxxx-xxxx-xxxxx-xxxxxxxx'); // For staging
+
+$client = Client::create(xApiKey: 'xxxxxxx-xxxx-xxxx-xxxxx-xxxxxxxx', staging: false); // For production
+
+// Now, get a Travel by it's id 
+$travel = $client->travels()->find('60feacb365f5f1002750c2b2');
 ```
 
 ## Change log

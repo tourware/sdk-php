@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Tourware;
+namespace Tourware\Auth;
 
 use Sigmie\Http\Contracts\Auth;
 
