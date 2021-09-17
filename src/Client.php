@@ -13,7 +13,7 @@ use Tourware\Entities\Accomondations;
 
 class Client
 {
-    public function __construct(protected JSONClientInterface $http)
+    final public function __construct(protected JSONClientInterface $http)
     {
     }
 

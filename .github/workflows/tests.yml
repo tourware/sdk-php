@@ -10,13 +10,6 @@ jobs:
   tests:
     runs-on: ubuntu-20.04
 
-    services:
-      elasticsearch:
-        image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.8.0
-        ports:
-        - 9200:9200
-        options: -e="discovery.type=single-node" --health-cmd="curl http://localhost:9200/_cluster/health" --health-interval=10s --health-timeout=5s --health-retries=10
-
     strategy:
       fail-fast: true
       matrix:
@@ -53,5 +46,4 @@ jobs:
         run: vendor/bin/paratest 
 
       - name: PHPStan
-        run: vendor/bin/phpstan analyse --memory-limit=-1
-
+        run: vendor/bin/phpstan analyse --memory-limit=-1 src tests
