@@ -6,6 +6,7 @@ namespace Tourware\Clients;
 
 use Sigmie\Http\Contracts\JSONClient;
 use Tourware\Contracts\Entity;
+use Tourware\Contracts\QueryBuilder;
 use Tourware\Shared\Requests;
 
 abstract class BaseClient
@@ -49,6 +50,11 @@ abstract class BaseClient
         $request = $this->destroyRequest($identifier);
 
         return $this->http->request($request)->json();
+    }
+
+    public function query()
+    {
+        return new QueryBuilder;
     }
 
     abstract protected function entity(): Entity;

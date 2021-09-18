@@ -18,9 +18,13 @@ class ClientTest extends \PHPUnit\Framework\TestCase
 
         // dd($client->travels()->find('60feacb365f5f1002750c2b2'));
 
-        dd($client->travels()->list());
+        $res = $client->travels()->query()
+            ->filter('active')
+            ->equals(true)
+            ->get()->json();
 
-        dd($client->accomondations()->list());
+        dd($res);
+
 
         // /** @var  JSONResponse $res */
         // $res = $client->query('travels')->get();
