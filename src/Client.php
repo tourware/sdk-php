@@ -19,7 +19,7 @@ class Client
 
     public static function create(string $xApiKey, bool $staging = true)
     {
-        $url = $staging ? 'https://cloud-staging.typisch-touristik.de' : 'https://cloud.typisch-touristik.de';
+        $url = $staging ? 'https://app-staging.tourware.net' : 'https://app.tourware.net';
 
         $client = JSONClient::create($url, new Authentication($xApiKey));
 

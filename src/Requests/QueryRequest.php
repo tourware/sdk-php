@@ -17,14 +17,15 @@ class QueryRequest extends ApiRequest
         int $limit = 100,
     ) {
 
-        $uri = new Uri($entity->alias());
-        $uri = Uri::withQueryValues($uri, ['filter' => json_encode($filters)]);
-        $uri = Uri::withQueryValues($uri, ['sort' => json_encode($sort)]);
-        $uri = Uri::withQueryValues($uri, ['skip' => $offset]);
-        $uri = Uri::withQueryValues($uri, ['limit' => $limit]);
+        $filters = json_encode($filters);
+        $sort = json_encode($sort);
 
-        dump($uri->__toString());
+        $url = "{$entity->alias()}?";
+        $url .= "filter={$filters}";
+        $url .= "&sort={$sort}";
+        $url .= "&limit={$limit}";
+        $url .= "&skip={$offset}";
 
-        parent::__construct('GET', $uri->__toString());
+        parent::__construct('GET', $url);
     }
 }
