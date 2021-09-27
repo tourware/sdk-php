@@ -34,7 +34,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tourware\\": "tests"
+            "Tourware\\Tests\\": "tests"
         }
     },
     "scripts": {

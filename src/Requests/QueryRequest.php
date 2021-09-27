@@ -16,7 +16,6 @@ class QueryRequest extends ApiRequest
         int $offset = 0,
         int $limit = 100,
     ) {
-
         $filters = json_encode($filters);
         $sort = json_encode($sort);
 

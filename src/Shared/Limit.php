@@ -13,7 +13,7 @@ use Tourware\Requests\ApiRequest;
 
 trait Limit
 {
-    private int $limit = 50;
+    private int $limit = 100;
 
     public function limit(int $int): static
     {

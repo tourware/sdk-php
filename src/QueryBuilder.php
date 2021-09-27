@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tourware;
 
+use GuzzleHttp\Psr7\Stream;
+use GuzzleHttp\Psr7\Utils;
 use Sigmie\Http\Contracts\JSONClient;
 use Sigmie\Http\Contracts\JSONResponse;
 use Tourware\Contracts\Entity;
@@ -18,8 +20,15 @@ class QueryBuilder implements QueryBuilderInterface
 {
     use Sort, Filter, Offset, Limit;
 
+    protected static null|Stream $stream = null;
+
     public function __construct(protected JSONClient $http, protected Entity $entity)
     {
+    }
+
+    public static function fakeStream(Stream $stream)
+    {
+        self::$stream = $stream;
     }
 
     public function entity(Entity $entity)
@@ -38,6 +47,8 @@ class QueryBuilder implements QueryBuilderInterface
             offset: $this->offset,
             limit: $this->limit
         );
+
+        $request = (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);
 
         return $this->http->request($request);
     }
