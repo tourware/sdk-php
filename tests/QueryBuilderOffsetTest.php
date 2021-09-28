@@ -23,7 +23,7 @@ class QueryBuilderOffsetTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()
+        $this->client->travel()->query()
         ->get();
     }
     /**
@@ -40,7 +40,7 @@ class QueryBuilderOffsetTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()
+        $this->client->travel()->query()
         ->offset(100)
         ->get();
     }

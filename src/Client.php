@@ -13,12 +13,14 @@ use Tourware\Contracts\ReadClient;
 use Tourware\Entities\Accomondation;
 use Tourware\Entities\Airport;
 use Tourware\Entities\Travel;
+use Tourware\Shared\Clients;
 
 class Client
 {
+    use Clients;
+
     final public function __construct(protected JSONClientInterface $http)
     {
-        
     }
 
     public static function create(string $xApiKey, bool $staging = true)
@@ -28,20 +30,5 @@ class Client
         $client = JSONClient::create($url, new Authentication($xApiKey));
 
         return new static($client);
-    }
-
-    public function travels(): TravelClient
-    {
-        return (new Travel)->client($this->http);
-    }
-
-    public function airports(): ReadClient 
-    {
-        return (new Airport)->client($this->http);
-    }
-
-    public function accomondations(): AccomondationsClient
-    {
-        return (new Accomondation)->client($this->http);
     }
 }

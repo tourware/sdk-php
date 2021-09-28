@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tourware\Entities;
 
 
-class ItineraryitemsService extends WriteEntity
+class ItineraryitemService extends WriteEntity
 {
     public function endpoint(): string
     {

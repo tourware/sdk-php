@@ -28,7 +28,7 @@ class QueryBuilderFilterTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()->filter('foo')->equals('bar')->get();
+        $this->client->travel()->query()->filter('foo')->equals('bar')->get();
     }
 
 
@@ -52,7 +52,7 @@ class QueryBuilderFilterTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()
+        $this->client->travel()->query()
             ->filter('foo')->equals('bar')
             ->filter('baz')->startsWith('foo')
             ->get();
@@ -76,7 +76,7 @@ class QueryBuilderFilterTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()
+        $this->client->travel()->query()
             ->addFilter($equals)
             ->get();
     }
@@ -99,7 +99,7 @@ class QueryBuilderFilterTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()
+        $this->client->travel()->query()
             ->addRawFilter($equals)
             ->get();
     }

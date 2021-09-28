@@ -30,7 +30,7 @@ use Tourware\Entities\Group;
 use Tourware\Entities\ImportDataStatus;
 use Tourware\Entities\Itineraryitem;
 use Tourware\Entities\ItineraryitemAccommodation;
-use Tourware\Entities\ItineraryitemsService;
+use Tourware\Entities\ItineraryitemService;
 use Tourware\Entities\Language;
 use Tourware\Entities\MealType;
 use Tourware\Entities\NonBookableContent;
@@ -124,7 +124,7 @@ class EntitiesTest extends TestCase
         $this->assertEquals('languages', (new Language)->endpoint());
 
         $this->assertEquals('itineraryitems', (new Itineraryitem)->endpoint());
-        $this->assertEquals('itineraryitemsservices', (new ItineraryitemsService)->endpoint());
+        $this->assertEquals('itineraryitemsservices', (new ItineraryitemService)->endpoint());
         $this->assertEquals('itineraryitemsaccommodations', (new ItineraryitemAccommodation)->endpoint());
 
         $this->assertEquals('importdatastatus', (new ImportDataStatus)->endpoint());

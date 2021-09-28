@@ -28,7 +28,7 @@ class QueryBuilderSortTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()->sort('foo')->asc()->get();
+        $this->client->travel()->query()->sort('foo')->asc()->get();
     }
 
 
@@ -52,7 +52,7 @@ class QueryBuilderSortTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()
+        $this->client->travel()->query()
             ->sort('foo')->asc()
             ->sort('bar')->desc()
             ->get();
@@ -74,7 +74,7 @@ class QueryBuilderSortTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()
+        $this->client->travel()->query()
             ->addRawSort($rawSort)
             ->get();
     }
@@ -95,7 +95,7 @@ class QueryBuilderSortTest extends TestCase
 
         $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
 
-        $this->client->travels()->query()
+        $this->client->travel()->query()
             ->addSort($sort)
             ->get();
     }
