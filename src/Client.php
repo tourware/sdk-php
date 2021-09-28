@@ -9,7 +9,7 @@ use Sigmie\Http\JSONClient;
 use Tourware\Auth\Authentication;
 use Tourware\Clients\AccomondationsClient;
 use Tourware\Clients\TravelClient;
-use Tourware\Entities\Accomondations;
+use Tourware\Entities\Accomondation;
 
 class Client
 {

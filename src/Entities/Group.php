@@ -6,10 +6,10 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\Entity as BaseEntity;
 
-class Accomondations extends BaseEntity
+class Group extends BaseEntity
 {
     public function alias(): string
     {
-        return 'accommodations';
+        return 'groups';
     }
 }

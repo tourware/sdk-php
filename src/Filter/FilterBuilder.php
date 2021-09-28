@@ -14,7 +14,6 @@ use Tourware\Operator\In;
 use Tourware\Operator\LessThan;
 use Tourware\Operator\Not;
 use Tourware\Operator\StartsWith;
-use Tourware\Query\Property;
 
 class FilterBuilder implements FilterBuilderInterface
 {

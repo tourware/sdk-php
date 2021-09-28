@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tourware\Operator;
 
 use Tourware\Contracts\Filter;
-use Tourware\Filter\Filter as FilterFilter;
 use Tourware\Query\Property;
 
 class StartsWith implements Filter

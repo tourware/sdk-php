@@ -10,10 +10,6 @@ use Tourware\QueryBuilder;
 
 class TravelClient extends BaseClient
 {
-    protected function entity(): Entity
-    {
-        return new Travel;
-    }
 
     public function query()
     {
@@ -22,6 +18,10 @@ class TravelClient extends BaseClient
 
     public function active()
     {
-        return;
+        
+    }
+    protected function entity(): Entity
+    {
+        return new Travel;
     }
 }

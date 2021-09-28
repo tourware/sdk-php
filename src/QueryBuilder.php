@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tourware;
 
 use GuzzleHttp\Psr7\Stream;
-use GuzzleHttp\Psr7\Utils;
 use Sigmie\Http\Contracts\JSONClient;
 use Sigmie\Http\Contracts\JSONResponse;
 use Tourware\Contracts\Entity;

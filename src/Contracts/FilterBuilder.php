@@ -1,8 +1,7 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tourware\Contracts;
 
-use Tourware\Sort\SortBuilder;
 
 interface FilterBuilder
 {

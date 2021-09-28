@@ -1,9 +1,8 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Tourware\Contracts;
 
 use Sigmie\Http\Contracts\JSONResponse;
-use Tourware\Contracts\SortBuilder;
 
 interface QueryBuilder
 {

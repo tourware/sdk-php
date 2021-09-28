@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Tourware\Sort;
 
 use Tourware\Contracts\QueryBuilder;
-use Tourware\Clients\BaseClient;
 use Tourware\Contracts\SortBuilder as SortBulderInterface;
 use Tourware\Orders\Asc;
 use Tourware\Orders\Desc;
-use Tourware\Query\Property;
 
 class SortBuilder implements SortBulderInterface
 {
