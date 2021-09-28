@@ -37,6 +37,102 @@ $client = Client::create(xApiKey: 'xxxxxxx', staging: false); // For production
 $travel = $client->travels()->find('60feacb365f5f1002750c2b2');
 ```
 
+### Entity Client
+Each **Tourware** entity has it's own client, which is resposible for handling the
+http operations. Each entity client is available to you, by using the `Tourware\Client`
+facade.
+
+For example there multiple ways of retrieving the client for the Travels
+```php
+use Tourware\Entities\Travel;
+
+// By using helper method
+$travel = $client->travel()->find();
+
+// By using the entity class
+$travel = $client->entity(new Travel)->find();
+
+// Or by using the raw endpoint 
+$travel = $client->raw('travels')->find();
+```
+
+
+### CRUD
+You can perform CRUD operations on your records using the `Tourware\Client`.
+
+```php
+
+// Create a new travel
+$response = $client->travel()->create([...]);
+
+// Find a travel
+$response = $client->travel()->find('bba0b42e4699');
+
+// Update an existing travel
+$response = $client->travel()->update('bba0b42e4699', [...]);
+
+// List all travels
+$response $client->travel()->list(offset: 0, limit: 50);
+
+// List specific travel
+$response = $client->travel()->delete('bba0b42e4699');
+
+```
+
+
+### Query
+
+The query builder provides a variety of method helping you filter your entities.
+
+#### Filter
+Let's say that you wan't to filter your **travels** and get only records which contain the 
+word "kenya".
+
+You can accomplish this by using the query builder like bellow:
+```php
+
+use Tourware\Operator\Contains;
+
+// By using the query builder
+$travels = $client->travel()->query()->filter('title')->contains('kenya')->get();
+
+// By using the filter class
+$travels = $client->travel()->query()->addFilter(new Contains('title', 'kenya'))->get();
+
+// By using raw filter
+$client->travel()->query()->addRawFilter(['property' => 'title', 'operator' => 'contains', 'value' => 'kenya'])->get();
+```
+
+#### Sort
+The query builder also allows you to sort the retrieved records.
+
+```php
+
+use Tourware\Orders\Asc;
+
+// By using the sort builder
+$travels = $client->travel()->query()->sort('id')->asc()->get();
+
+// By using the sort class
+$travels = $client->travel()->query()->addSort(new Asc('id'))->get();
+
+// By using raw sort
+$travels = $client->travel()->query()->addRawSort(['property' => 'id', 'direction' => 'asc'])->get();
+
+```
+
+#### Offset & Limit
+
+It's a common case that you want to paginate your results. Therefore the query
+builder also providers the `offset` and `limit` methods. 
+
+Here's how you can retrive chunks of your travels
+```php
+
+$travels = $client->travel()->query()->offset(5)->limit(20)->get();
+
+```
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
