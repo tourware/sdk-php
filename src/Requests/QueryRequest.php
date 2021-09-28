@@ -19,7 +19,7 @@ class QueryRequest extends ApiRequest
         $filters = json_encode($filters);
         $sort = json_encode($sort);
 
-        $uri = new Uri("{$entity->alias()}?");
+        $uri = new Uri("{$entity->endpoint()}?");
         $uri = Uri::withQueryValue($uri, 'filter', $filters);
         $uri = Uri::withQueryValue($uri, 'sort', $sort);
         $uri = Uri::withQueryValue($uri, 'limit', (string) $limit);

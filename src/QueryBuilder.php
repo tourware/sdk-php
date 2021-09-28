@@ -6,6 +6,7 @@ namespace Tourware;
 
 use GuzzleHttp\Psr7\Stream;
 use Sigmie\Http\Contracts\JSONClient;
+use Sigmie\Http\Contracts\JSONRequest;
 use Sigmie\Http\Contracts\JSONResponse;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\QueryBuilder as QueryBuilderInterface;
@@ -37,7 +38,26 @@ class QueryBuilder implements QueryBuilderInterface
         return $this;
     }
 
-    public function get(): JSONResponse
+    public function response(): JSONResponse
+    {
+        $request = $this->createRequest();
+
+        return $this->http->request($request);
+    }
+
+    public function request(): JSONRequest
+    {
+        return $this->createRequest();
+    }
+
+    public function total(): int
+    {
+        $request = $this->createRequest();
+
+        return $this->http->request($request)->json('total');
+    }
+
+    private function createRequest(): QueryRequest
     {
         $request = new QueryRequest(
             entity: $this->entity,
@@ -49,6 +69,13 @@ class QueryBuilder implements QueryBuilderInterface
 
         $request = (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);
 
-        return $this->http->request($request);
+        return $request;
+    }
+
+    public function get(): array
+    {
+        $request = $this->createRequest();
+
+        return $this->http->request($request)->json();
     }
 }

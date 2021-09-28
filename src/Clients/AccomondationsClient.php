@@ -7,7 +7,7 @@ namespace Tourware\Clients;
 use Tourware\Contracts\Entity;
 use Tourware\Entities\Accomondation;
 
-class AccomondationsClient extends BaseClient
+class AccomondationsClient extends WriteClient
 {
     protected function entity(): Entity
     {

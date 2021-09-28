@@ -27,16 +27,16 @@ class ClientTest extends \PHPUnit\Framework\TestCase
         //     ->addSort(new Asc('id'))
         //     ->get();
 
-        $res = $client->travels()->query()
-            ->filter('id')
-            ->equals('60feacb365f5f1002750c2b2')
-            ->sort('name')->asc()
-            ->sort('title')->desc()
-            ->limit(5)
-            ->offset(0)
-            ->get()->json();
+        // $res = $client->travels()->query()
+        //     ->filter('id')
+        //     ->equals('60feacb365f5f1002750c2b2')
+        //     ->sort('name')->asc()
+        //     ->sort('title')->desc()
+        //     ->limit(5)
+        //     ->offset(0)
+        //     ->get()->json();
 
-        dd($res);
+        // dd($res);
 
 
         // /** @var  JSONResponse $res */

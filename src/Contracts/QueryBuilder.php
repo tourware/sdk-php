@@ -1,7 +1,10 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Tourware\Contracts;
 
+use Sigmie\Http\Contracts\JSONRequest;
 use Sigmie\Http\Contracts\JSONResponse;
 
 interface QueryBuilder
@@ -22,5 +25,11 @@ interface QueryBuilder
 
     public function limit(int $limit): static;
 
-    public function get(): JSONResponse;
+    public function request(): JSONRequest;
+
+    public function response(): JSONResponse;
+
+    public function total(): int;
+
+    public function get(): array;
 }

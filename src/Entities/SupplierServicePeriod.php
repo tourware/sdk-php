@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Tourware\Entities;
 
-use Tourware\Entities\Entity as BaseEntity;
+use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
 class SupplierServicePeriod extends BaseEntity
 {
-    public function alias(): string
+    public function endpoint(): string
     {
         return 'suppliersservicesperiods';
     }

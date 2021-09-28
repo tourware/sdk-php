@@ -90,84 +90,84 @@ class EntitiesTest extends TestCase
      */
     public function aliases()
     {
-        $this->assertEquals('accommodations', (new Accomondation)->alias());
-        $this->assertEquals('accommodationscontingents', (new AccommodationContingent)->alias());
-        $this->assertEquals('accommodationsperiods', (new AccommodationPeriod)->alias());
-        $this->assertEquals('accommodationspricingoptions', (new AccommodationPricingOption)->alias());
+        $this->assertEquals('accommodations', (new Accomondation)->endpoint());
+        $this->assertEquals('accommodationscontingents', (new AccommodationContingent)->endpoint());
+        $this->assertEquals('accommodationsperiods', (new AccommodationPeriod)->endpoint());
+        $this->assertEquals('accommodationspricingoptions', (new AccommodationPricingOption)->endpoint());
 
-        $this->assertEquals('vacationrentalspricemodifications', (new VacationRentalPriceModification)->alias());
-        $this->assertEquals('vacationrentalsperiods', (new VacationRentalPeriod)->alias());
-        $this->assertEquals('vacationrentalsamenities', (new VacationRentalAmenity)->alias());
-        $this->assertEquals('vacationrentals', (new VacationRental)->alias());
+        $this->assertEquals('vacationrentalspricemodifications', (new VacationRentalPriceModification)->endpoint());
+        $this->assertEquals('vacationrentalsperiods', (new VacationRentalPeriod)->endpoint());
+        $this->assertEquals('vacationrentalsamenities', (new VacationRentalAmenity)->endpoint());
+        $this->assertEquals('vacationrentals', (new VacationRental)->endpoint());
 
-        $this->assertEquals('users', (new User )->alias());
-        $this->assertEquals('templates', (new Template )->alias());
-        $this->assertEquals('tags', (new Tag)->alias());
-        $this->assertEquals('settings', (new Setting)->alias());
-        $this->assertEquals('subtypes', (new Subtype)->alias());
+        $this->assertEquals('users', (new User )->endpoint());
+        $this->assertEquals('templates', (new Template )->endpoint());
+        $this->assertEquals('tags', (new Tag)->endpoint());
+        $this->assertEquals('settings', (new Setting)->endpoint());
+        $this->assertEquals('subtypes', (new Subtype)->endpoint());
 
-        $this->assertEquals('suppliers', (new Supplier )->alias());
-        $this->assertEquals('suppliersservices', (new SupplierService )->alias());
-        $this->assertEquals('suppliersservicescontingents', (new SupplierServiceContingent )->alias());
-        $this->assertEquals('suppliersservicesperiods', (new SupplierServicePeriod )->alias());
-        $this->assertEquals('suppliersservicespricingoptions', (new SupplierServicePricingOption  )->alias());
+        $this->assertEquals('suppliers', (new Supplier )->endpoint());
+        $this->assertEquals('suppliersservices', (new SupplierService )->endpoint());
+        $this->assertEquals('suppliersservicescontingents', (new SupplierServiceContingent )->endpoint());
+        $this->assertEquals('suppliersservicesperiods', (new SupplierServicePeriod )->endpoint());
+        $this->assertEquals('suppliersservicespricingoptions', (new SupplierServicePricingOption  )->endpoint());
 
 
-        $this->assertEquals('travelsseasons', (new TravelSeason)->alias());
-        $this->assertEquals('travelspassengers', (new TravelPassenger )->alias());
-        $this->assertEquals('travelsdates', (new TravelDate )->alias());
-        $this->assertEquals('travelsbricksaccommodations', (new TravelBrickAccommodation)->alias());
-        $this->assertEquals('travelsbricks', (new TravelBrick)->alias());
-        $this->assertEquals('travels', (new Travel)->alias());
+        $this->assertEquals('travelsseasons', (new TravelSeason)->endpoint());
+        $this->assertEquals('travelspassengers', (new TravelPassenger )->endpoint());
+        $this->assertEquals('travelsdates', (new TravelDate )->endpoint());
+        $this->assertEquals('travelsbricksaccommodations', (new TravelBrickAccommodation)->endpoint());
+        $this->assertEquals('travelsbricks', (new TravelBrick)->endpoint());
+        $this->assertEquals('travels', (new Travel)->endpoint());
 
-        $this->assertEquals('recordfollowers', (new RecordFollower)->alias());
-        $this->assertEquals('relations', (new Relation)->alias());
-        $this->assertEquals('resources', (new Resource)->alias());
-        $this->assertEquals('recordfollowers', (new  RecordFollower )->alias());
-        $this->assertEquals('resourcesrecords', (new ResourceRecord)->alias());
-        $this->assertEquals('roles', (new Role)->alias());
-        $this->assertEquals('roundtrips', (new Roundtrip)->alias());
+        $this->assertEquals('recordfollowers', (new RecordFollower)->endpoint());
+        $this->assertEquals('relations', (new Relation)->endpoint());
+        $this->assertEquals('resources', (new Resource)->endpoint());
+        $this->assertEquals('recordfollowers', (new  RecordFollower )->endpoint());
+        $this->assertEquals('resourcesrecords', (new ResourceRecord)->endpoint());
+        $this->assertEquals('roles', (new Role)->endpoint());
+        $this->assertEquals('roundtrips', (new Roundtrip)->endpoint());
 
-        $this->assertEquals('operationsbookings', (new OperationBooking )->alias());
-        $this->assertEquals('operationsbookingsservices', (new OperationBookingService )->alias());
-        $this->assertEquals('operationsbookingscancellationfees', (new OperationBookingCancellationFee )->alias());
-        $this->assertEquals('operationspayments', (new OperationPayment)->alias());
-        $this->assertEquals('operationspassengers', (new OperationPassenger)->alias());
-        $this->assertEquals('operationsrequests', (new OperationRequest)->alias());
+        $this->assertEquals('operationsbookings', (new OperationBooking )->endpoint());
+        $this->assertEquals('operationsbookingsservices', (new OperationBookingService )->endpoint());
+        $this->assertEquals('operationsbookingscancellationfees', (new OperationBookingCancellationFee )->endpoint());
+        $this->assertEquals('operationspayments', (new OperationPayment)->endpoint());
+        $this->assertEquals('operationspassengers', (new OperationPassenger)->endpoint());
+        $this->assertEquals('operationsrequests', (new OperationRequest)->endpoint());
 
-        $this->assertEquals('nonbookablecontent', (new NonBookableContent)->alias());
-        $this->assertEquals('mealtypes', (new MealType)->alias());
-        $this->assertEquals('languages', (new Language)->alias());
+        $this->assertEquals('nonbookablecontent', (new NonBookableContent)->endpoint());
+        $this->assertEquals('mealtypes', (new MealType)->endpoint());
+        $this->assertEquals('languages', (new Language)->endpoint());
 
-        $this->assertEquals('itineraryitems', (new Itineraryitem)->alias());
-        $this->assertEquals('itineraryitemsservices', (new ItineraryitemsService)->alias());
-        $this->assertEquals('itineraryitemsaccommodations', (new ItineraryitemAccommodation)->alias());
+        $this->assertEquals('itineraryitems', (new Itineraryitem)->endpoint());
+        $this->assertEquals('itineraryitemsservices', (new ItineraryitemsService)->endpoint());
+        $this->assertEquals('itineraryitemsaccommodations', (new ItineraryitemAccommodation)->endpoint());
 
-        $this->assertEquals('importdatastatus', (new ImportDataStatus)->alias());
-        $this->assertEquals('groups', (new Group)->alias());
-        $this->assertEquals('followups', (new Followup)->alias());
-        $this->assertEquals('filters', (new Filter)->alias());
-        $this->assertEquals('folders', (new Folder)->alias());
-        $this->assertEquals('files', (new File)->alias());
+        $this->assertEquals('importdatastatus', (new ImportDataStatus)->endpoint());
+        $this->assertEquals('groups', (new Group)->endpoint());
+        $this->assertEquals('followups', (new Followup)->endpoint());
+        $this->assertEquals('filters', (new Filter)->endpoint());
+        $this->assertEquals('folders', (new Folder)->endpoint());
+        $this->assertEquals('files', (new File)->endpoint());
 
-        $this->assertEquals('emailtemplates', (new EmailTemplate)->alias());
-        $this->assertEquals('destinations', (new Destination)->alias());
+        $this->assertEquals('emailtemplates', (new EmailTemplate)->endpoint());
+        $this->assertEquals('destinations', (new Destination)->endpoint());
 
-        $this->assertEquals('currencies', (new Currency)->alias());
-        $this->assertEquals('countries', (new Country)->alias());
+        $this->assertEquals('currencies', (new Currency)->endpoint());
+        $this->assertEquals('countries', (new Country)->endpoint());
 
-        $this->assertEquals('contacts', (new Contact)->alias());
-        $this->assertEquals('contactscompanies', (new ContactCompany)->alias());
-        $this->assertEquals('comments', (new Comment)->alias());
+        $this->assertEquals('contacts', (new Contact)->endpoint());
+        $this->assertEquals('contactscompanies', (new ContactCompany)->endpoint());
+        $this->assertEquals('comments', (new Comment)->endpoint());
 
-        $this->assertEquals('cloudimportconfigs', (new CloudImportConfig)->alias());
-        $this->assertEquals('clonestatus', (new CloneStatus)->alias());
+        $this->assertEquals('cloudimportconfigs', (new CloudImportConfig)->endpoint());
+        $this->assertEquals('clonestatus', (new CloneStatus)->endpoint());
 
-        $this->assertEquals('attributes', (new Attribute)->alias());
-        $this->assertEquals('airports', (new Airport)->alias());
+        $this->assertEquals('attributes', (new Attribute)->endpoint());
+        $this->assertEquals('airports', (new Airport)->endpoint());
 
-        $this->assertEquals('additionaltypes', (new AdditionalType)->alias());
-        $this->assertEquals('additionalfields', (new AdditionalField)->alias());
-        $this->assertEquals('additionalbookableservice', (new AdditionalBookableService)->alias());
+        $this->assertEquals('additionaltypes', (new AdditionalType)->endpoint());
+        $this->assertEquals('additionalfields', (new AdditionalField)->endpoint());
+        $this->assertEquals('additionalbookableservice', (new AdditionalBookableService)->endpoint());
     }
 }
