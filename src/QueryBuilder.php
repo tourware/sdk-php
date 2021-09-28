@@ -18,12 +18,16 @@ use Tourware\Shared\Sort;
 
 class QueryBuilder implements QueryBuilderInterface
 {
-    use Sort, Filter, Offset, Limit;
+    use Sort;
+    use Filter;
+    use Offset;
+    use Limit;
 
     protected static null|Stream $stream = null;
 
     public function __construct(protected JSONClient $http, protected Entity $entity)
-    { }
+    {
+    }
 
     public static function fakeStream(Stream $stream)
     {

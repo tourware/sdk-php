@@ -10,7 +10,6 @@ use Tourware\Requests\ApiRequest;
 
 trait WriteRequests
 {
-    abstract protected function endpoint(): string;
 
     protected static null|Stream $stream = null;
 
@@ -18,6 +17,7 @@ trait WriteRequests
     {
         self::$stream = $stream;
     }
+    abstract protected function endpoint(): string;
 
     protected function updateRequest(string $identifier, array $payload): JSONRequest
     {

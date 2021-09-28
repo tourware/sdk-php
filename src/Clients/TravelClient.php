@@ -10,7 +10,7 @@ use Tourware\Entities\Travel;
 
 class TravelClient extends WriteClient
 {
-    // Example for how we can extend the BaseClient to 
+    // Example for how we can extend the BaseClient to
     // create helpfull methods for common tasks
     // public function active(): QueryBuilderInterface
     // {
@@ -19,6 +19,6 @@ class TravelClient extends WriteClient
 
     protected function entity(): Entity
     {
-        return new Travel;
+        return new Travel();
     }
 }

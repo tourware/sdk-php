@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tourware\Entities;
 
 use Sigmie\Http\Contracts\JSONClient;
-use Tourware\Clients\TravelClient;
 use Tourware\Clients\WriteClient as WriteClient;
 use Tourware\Contracts\WriteClient as WriteClientInterface;
 

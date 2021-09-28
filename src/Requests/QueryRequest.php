@@ -6,6 +6,7 @@ namespace Tourware\Requests;
 
 use GuzzleHttp\Psr7\Uri;
 use Tourware\Contracts\Entity;
+use Tourware\Requests\ApiRequest;
 
 class QueryRequest extends ApiRequest
 {

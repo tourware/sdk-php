@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 namespace Tourware\SDK;
 
-use Sigmie\Http\Contracts\JSONResponse;
-use Tourware\Client;
-use Tourware\Entities\AccommodationPricingOption;
 use Tourware\Entities\Travel;
-use Tourware\Operator\Contains;
-use Tourware\Orders\Asc;
 use Tourware\Requests\ApiRequest;
 use Tourware\Tests\TestCase;
 

@@ -26,7 +26,8 @@ use Tourware\Entities\Currency;
 use Tourware\Entities\Destination;
 use Tourware\Entities\EmailTemplate;
 use Tourware\Entities\File;
-use Tourware\Entities\Filter; use Tourware\Entities\Folder;
+use Tourware\Entities\Filter;
+use Tourware\Entities\Folder;
 use Tourware\Entities\Followup;
 use Tourware\Entities\Group;
 use Tourware\Entities\ImportDataStatus;
@@ -77,326 +78,326 @@ trait Clients
 
     public function airports(): ReadClient
     {
-        return (new Airport)->client($this->http);
+        return (new Airport())->client($this->http);
     }
 
     public function language(): ReadClient
     {
-        return (new Language)->client($this->http);
+        return (new Language())->client($this->http);
     }
 
     public function mealType(): ReadClient
     {
-        return (new MealType)->client($this->http);
+        return (new MealType())->client($this->http);
     }
 
     public function currency(): ReadClient
     {
-        return (new Currency)->client($this->http);
+        return (new Currency())->client($this->http);
     }
 
     public function additionalType(): ReadClient
     {
-        return (new AdditionalType)->client($this->http);
+        return (new AdditionalType())->client($this->http);
     }
 
     public function country(): ReadClient
     {
-        return (new Country)->client($this->http);
+        return (new Country())->client($this->http);
     }
 
     public function roundtrip(): ReadClient
     {
-        return (new Roundtrip)->client($this->http);
+        return (new Roundtrip())->client($this->http);
     }
 
     public function subtype(): ReadClient
     {
-        return (new Subtype)->client($this->http);
+        return (new Subtype())->client($this->http);
     }
 
     public function vacationRentalAmenity(): ReadClient
     {
-        return (new VacationRentalAmenity)->client($this->http);
+        return (new VacationRentalAmenity())->client($this->http);
     }
 
     public function accomondationsContigent(): WriteClient
     {
-        return (new AccommodationContingent)->client($this->http);
+        return (new AccommodationContingent())->client($this->http);
     }
 
     public function accomondationPeriod(): WriteClient
     {
-        return (new AccommodationPeriod)->client($this->http);
+        return (new AccommodationPeriod())->client($this->http);
     }
 
     public function accomondationPricingOption(): WriteClient
     {
-        return (new AccommodationPricingOption)->client($this->http);
+        return (new AccommodationPricingOption())->client($this->http);
     }
 
     public function accomondation(): WriteClient
     {
-        return (new Accomondation)->client($this->http);
+        return (new Accomondation())->client($this->http);
     }
 
     public function additionalBookableService(): WriteClient
     {
-        return (new AdditionalBookableService)->client($this->http);
+        return (new AdditionalBookableService())->client($this->http);
     }
 
     public function additionalField(): WriteClient
     {
-        return (new AdditionalField)->client($this->http);
+        return (new AdditionalField())->client($this->http);
     }
 
     public function attribute(): WriteClient
     {
-        return (new Attribute)->client($this->http);
+        return (new Attribute())->client($this->http);
     }
 
     public function cloneStatus(): WriteClient
     {
-        return (new CloneStatus)->client($this->http);
+        return (new CloneStatus())->client($this->http);
     }
 
     public function cloudImportConfigs(): WriteClient
     {
-        return (new CloudImportConfig)->client($this->http);
+        return (new CloudImportConfig())->client($this->http);
     }
 
     public function comment(): WriteClient
     {
-        return (new Comment)->client($this->http);
+        return (new Comment())->client($this->http);
     }
 
     public function contact(): WriteClient
     {
-        return (new Contact)->client($this->http);
+        return (new Contact())->client($this->http);
     }
 
     public function contactCompany(): WriteClient
     {
-        return (new ContactCompany)->client($this->http);
+        return (new ContactCompany())->client($this->http);
     }
 
     public function destination(): WriteClient
     {
-        return (new Destination)->client($this->http);
+        return (new Destination())->client($this->http);
     }
 
     public function emailTemplate(): WriteClient
     {
-        return (new EmailTemplate)->client($this->http);
+        return (new EmailTemplate())->client($this->http);
     }
 
     public function file(): WriteClient
     {
-        return (new File)->client($this->http);
+        return (new File())->client($this->http);
     }
 
     public function filter(): WriteClient
     {
-        return (new Filter)->client($this->http);
+        return (new Filter())->client($this->http);
     }
 
     public function folder(): WriteClient
     {
-        return (new Folder)->client($this->http);
+        return (new Folder())->client($this->http);
     }
 
     public function followup(): WriteClient
     {
-        return (new Followup)->client($this->http);
+        return (new Followup())->client($this->http);
     }
 
     public function group(): WriteClient
     {
-        return (new Group)->client($this->http);
+        return (new Group())->client($this->http);
     }
 
     public function importDataStatus(): WriteClient
     {
-        return (new ImportDataStatus)->client($this->http);
+        return (new ImportDataStatus())->client($this->http);
     }
 
     public function iternaryitem(): WriteClient
     {
-        return (new Itineraryitem)->client($this->http);
+        return (new Itineraryitem())->client($this->http);
     }
 
     public function iternaryitemAccomondation(): WriteClient
     {
-        return (new ItineraryitemAccommodation)->client($this->http);
+        return (new ItineraryitemAccommodation())->client($this->http);
     }
 
     public function iternaryitemService(): WriteClient
     {
-        return (new ItineraryitemService)->client($this->http);
+        return (new ItineraryitemService())->client($this->http);
     }
 
     public function nonBookableContent(): WriteClient
     {
-        return (new NonBookableContent)->client($this->http);
+        return (new NonBookableContent())->client($this->http);
     }
 
     public function operationBooking(): WriteClient
     {
-        return (new OperationBooking)->client($this->http);
+        return (new OperationBooking())->client($this->http);
     }
 
     public function operationBookingCancelationFee(): WriteClient
     {
-        return (new OperationBookingCancellationFee)->client($this->http);
+        return (new OperationBookingCancellationFee())->client($this->http);
     }
 
     public function operationBookingService(): WriteClient
     {
-        return (new OperationBookingService)->client($this->http);
+        return (new OperationBookingService())->client($this->http);
     }
 
     public function operationPassenger(): WriteClient
     {
-        return (new OperationPassenger)->client($this->http);
+        return (new OperationPassenger())->client($this->http);
     }
 
     public function operationPayment(): WriteClient
     {
-        return (new OperationPayment)->client($this->http);
+        return (new OperationPayment())->client($this->http);
     }
 
     public function operationRequest(): WriteClient
     {
-        return (new OperationRequest)->client($this->http);
+        return (new OperationRequest())->client($this->http);
     }
 
     public function pois(): WriteClient
     {
-        return (new Pois)->client($this->http);
+        return (new Pois())->client($this->http);
     }
 
     public function priceCategory(): WriteClient
     {
-        return (new PriceCategory)->client($this->http);
+        return (new PriceCategory())->client($this->http);
     }
 
     public function priceGroup(): WriteClient
     {
-        return (new PriceGroup)->client($this->http);
+        return (new PriceGroup())->client($this->http);
     }
 
     public function recordFollwoer(): WriteClient
     {
-        return (new RecordFollower)->client($this->http);
+        return (new RecordFollower())->client($this->http);
     }
 
     public function relation(): WriteClient
     {
-        return (new Relation)->client($this->http);
+        return (new Relation())->client($this->http);
     }
 
     public function resource(): WriteClient
     {
-        return (new Resource)->client($this->http);
+        return (new Resource())->client($this->http);
     }
 
     public function resourceRecord(): WriteClient
     {
-        return (new ResourceRecord)->client($this->http);
+        return (new ResourceRecord())->client($this->http);
     }
 
     public function role(): WriteClient
     {
-        return (new Role)->client($this->http);
+        return (new Role())->client($this->http);
     }
 
     public function settings(): WriteClient
     {
-        return (new Setting)->client($this->http);
+        return (new Setting())->client($this->http);
     }
 
     public function supplier(): WriteClient
     {
-        return (new Supplier)->client($this->http);
+        return (new Supplier())->client($this->http);
     }
 
     public function supplierService(): WriteClient
     {
-        return (new SupplierService)->client($this->http);
+        return (new SupplierService())->client($this->http);
     }
 
     public function supplierServiceContingent(): WriteClient
     {
-        return (new SupplierServiceContingent)->client($this->http);
+        return (new SupplierServiceContingent())->client($this->http);
     }
 
     public function supplierServicePeriod(): WriteClient
     {
-        return (new  SupplierServicePeriod)->client($this->http);
+        return (new  SupplierServicePeriod())->client($this->http);
     }
 
     public function supplierServicePricingOption(): WriteClient
     {
-        return (new SupplierServicePricingOption)->client($this->http);
+        return (new SupplierServicePricingOption())->client($this->http);
     }
 
     public function tag(): WriteClient
     {
-        return (new Tag)->client($this->http);
+        return (new Tag())->client($this->http);
     }
 
     public function template(): WriteClient
     {
-        return (new Template)->client($this->http);
+        return (new Template())->client($this->http);
     }
 
     public function travel(): TravelClient
     {
-        return (new Travel)->client($this->http);
+        return (new Travel())->client($this->http);
     }
 
     public function travelBrick(): WriteClient
     {
-        return (new TravelBrick)->client($this->http);
+        return (new TravelBrick())->client($this->http);
     }
 
     public function travelBrickAccommodation(): WriteClient
     {
-        return (new TravelBrickAccommodation)->client($this->http);
+        return (new TravelBrickAccommodation())->client($this->http);
     }
 
     public function travelDate(): WriteClient
     {
-        return (new TravelDate)->client($this->http);
+        return (new TravelDate())->client($this->http);
     }
 
     public function travelPassenger(): WriteClient
     {
-        return (new TravelPassenger)->client($this->http);
+        return (new TravelPassenger())->client($this->http);
     }
 
     public function travelSeason(): WriteClient
     {
-        return (new TravelSeason)->client($this->http);
+        return (new TravelSeason())->client($this->http);
     }
 
     public function user(): WriteClient
     {
-        return (new User)->client($this->http);
+        return (new User())->client($this->http);
     }
 
     public function vacationRental(): WriteClient
     {
-        return (new VacationRental)->client($this->http);
+        return (new VacationRental())->client($this->http);
     }
 
     public function vacationRentalPeriod(): WriteClient
     {
-        return (new VacationRentalPeriod)->client($this->http);
+        return (new VacationRentalPeriod())->client($this->http);
     }
 
     public function vacationRentalPriceModification(): WriteClient
     {
-        return (new VacationRentalPriceModification)->client($this->http);
+        return (new VacationRentalPriceModification())->client($this->http);
     }
 }

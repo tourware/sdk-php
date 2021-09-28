@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tourware\Tests;
 
-use Tourware\Client;
 use Tourware\Contracts\ReadClient;
 use Tourware\Contracts\WriteClient;
 use Tourware\Entities\AccommodationContingent;

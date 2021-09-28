@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tourware\Entities;
 
-
 class SupplierServiceContingent extends WriteEntity
 {
     public function endpoint(): string

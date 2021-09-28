@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace Tourware\Tests;
 
-use Tourware\Clients\WriteClient;
-use Tourware\Entities\Raw;
-use Tourware\Entities\Travel;
 use Tourware\Requests\ApiRequest;
 
 class WriteClientTest extends TestCase

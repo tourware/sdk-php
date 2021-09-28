@@ -47,3 +47,6 @@ jobs:
 
       - name: PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=-1 src tests
+
+      - name: PHP Code sniffer
+        run: ./vendor/bin/phpcbf --standard=PSR12 src

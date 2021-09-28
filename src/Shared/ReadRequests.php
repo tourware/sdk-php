@@ -11,7 +11,6 @@ use Tourware\Requests\ApiRequest;
 
 trait ReadRequests
 {
-    abstract protected function endpoint(): string;
 
     protected static null|Stream $stream = null;
 
@@ -19,6 +18,7 @@ trait ReadRequests
     {
         self::$stream = $stream;
     }
+    abstract protected function endpoint(): string;
 
     protected function showRequest(string $identifier): JSONRequest
     {
@@ -33,7 +33,7 @@ trait ReadRequests
         $uri = Uri::withQueryValue($uri, 'limit', (string) $limit);
         $uri = Uri::withQueryValue($uri, 'skip', (string) $offset);
 
-        $request = new ApiRequest('GET',(string) $uri);
+        $request = new ApiRequest('GET', (string) $uri);
 
         return (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);
     }
