@@ -9,7 +9,7 @@ use Tourware\Clients\ReadClient;
 use Tourware\Contracts\Entity as EntityInterface;
 use Tourware\Contracts\ReadClient as ReadClientInterface;
 
-abstract class ReadonlyEntity implements EntityInterface
+abstract class ReadEntity implements EntityInterface
 {
     public function client(JSONClient $http): ReadClientInterface
     {

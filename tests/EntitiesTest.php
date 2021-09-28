@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Tourware\Tests;
 
+use Tourware\Client;
+use Tourware\Contracts\ReadClient;
+use Tourware\Contracts\WriteClient;
 use Tourware\Entities\AccommodationContingent;
 use Tourware\Entities\AccommodationPeriod;
 use Tourware\Entities\AccommodationPricingOption;
@@ -84,22 +87,21 @@ class EntitiesTest extends TestCase
         $this->assertEquals('vacationrentalsamenities', (new VacationRentalAmenity)->endpoint());
         $this->assertEquals('vacationrentals', (new VacationRental)->endpoint());
 
-        $this->assertEquals('users', (new User )->endpoint());
-        $this->assertEquals('templates', (new Template )->endpoint());
+        $this->assertEquals('users', (new User)->endpoint());
+        $this->assertEquals('templates', (new Template)->endpoint());
         $this->assertEquals('tags', (new Tag)->endpoint());
         $this->assertEquals('settings', (new Setting)->endpoint());
         $this->assertEquals('subtypes', (new Subtype)->endpoint());
 
-        $this->assertEquals('suppliers', (new Supplier )->endpoint());
-        $this->assertEquals('suppliersservices', (new SupplierService )->endpoint());
-        $this->assertEquals('suppliersservicescontingents', (new SupplierServiceContingent )->endpoint());
-        $this->assertEquals('suppliersservicesperiods', (new SupplierServicePeriod )->endpoint());
-        $this->assertEquals('suppliersservicespricingoptions', (new SupplierServicePricingOption  )->endpoint());
-
+        $this->assertEquals('suppliers', (new Supplier)->endpoint());
+        $this->assertEquals('suppliersservices', (new SupplierService)->endpoint());
+        $this->assertEquals('suppliersservicescontingents', (new SupplierServiceContingent)->endpoint());
+        $this->assertEquals('suppliersservicesperiods', (new SupplierServicePeriod)->endpoint());
+        $this->assertEquals('suppliersservicespricingoptions', (new SupplierServicePricingOption)->endpoint());
 
         $this->assertEquals('travelsseasons', (new TravelSeason)->endpoint());
-        $this->assertEquals('travelspassengers', (new TravelPassenger )->endpoint());
-        $this->assertEquals('travelsdates', (new TravelDate )->endpoint());
+        $this->assertEquals('travelspassengers', (new TravelPassenger)->endpoint());
+        $this->assertEquals('travelsdates', (new TravelDate)->endpoint());
         $this->assertEquals('travelsbricksaccommodations', (new TravelBrickAccommodation)->endpoint());
         $this->assertEquals('travelsbricks', (new TravelBrick)->endpoint());
         $this->assertEquals('travels', (new Travel)->endpoint());
@@ -107,14 +109,14 @@ class EntitiesTest extends TestCase
         $this->assertEquals('recordfollowers', (new RecordFollower)->endpoint());
         $this->assertEquals('relations', (new Relation)->endpoint());
         $this->assertEquals('resources', (new Resource)->endpoint());
-        $this->assertEquals('recordfollowers', (new  RecordFollower )->endpoint());
+        $this->assertEquals('recordfollowers', (new  RecordFollower)->endpoint());
         $this->assertEquals('resourcesrecords', (new ResourceRecord)->endpoint());
         $this->assertEquals('roles', (new Role)->endpoint());
         $this->assertEquals('roundtrips', (new Roundtrip)->endpoint());
 
-        $this->assertEquals('operationsbookings', (new OperationBooking )->endpoint());
-        $this->assertEquals('operationsbookingsservices', (new OperationBookingService )->endpoint());
-        $this->assertEquals('operationsbookingscancellationfees', (new OperationBookingCancellationFee )->endpoint());
+        $this->assertEquals('operationsbookings', (new OperationBooking)->endpoint());
+        $this->assertEquals('operationsbookingsservices', (new OperationBookingService)->endpoint());
+        $this->assertEquals('operationsbookingscancellationfees', (new OperationBookingCancellationFee)->endpoint());
         $this->assertEquals('operationspayments', (new OperationPayment)->endpoint());
         $this->assertEquals('operationspassengers', (new OperationPassenger)->endpoint());
         $this->assertEquals('operationsrequests', (new OperationRequest)->endpoint());
@@ -153,5 +155,79 @@ class EntitiesTest extends TestCase
         $this->assertEquals('additionaltypes', (new AdditionalType)->endpoint());
         $this->assertEquals('additionalfields', (new AdditionalField)->endpoint());
         $this->assertEquals('additionalbookableservice', (new AdditionalBookableService)->endpoint());
+    }
+
+    /**
+     * @test
+     */
+    public function clients()
+    {
+        $client = $this->client;
+
+        // Write
+        $this->assertInstanceOf(WriteClient::class, $client->accomondation());
+        $this->assertInstanceOf(WriteClient::class, $client->accomondationsContigent());
+        $this->assertInstanceOf(WriteClient::class, $client->accomondationPricingOption());
+        $this->assertInstanceOf(WriteClient::class, $client->accomondationPeriod());
+        $this->assertInstanceOf(WriteClient::class, $client->vacationRentalPriceModification());
+        $this->assertInstanceOf(WriteClient::class, $client->vacationRentalPeriod());
+        $this->assertInstanceOf(WriteClient::class, $client->vacationRental());
+        $this->assertInstanceOf(WriteClient::class, $client->user());
+        $this->assertInstanceOf(WriteClient::class, $client->template());
+        $this->assertInstanceOf(WriteClient::class, $client->tag());
+        $this->assertInstanceOf(WriteClient::class, $client->settings());
+        $this->assertInstanceOf(WriteClient::class, $client->supplier());
+        $this->assertInstanceOf(WriteClient::class, $client->supplierService());
+        $this->assertInstanceOf(WriteClient::class, $client->supplierServiceContingent());
+        $this->assertInstanceOf(WriteClient::class, $client->supplierServicePeriod());
+        $this->assertInstanceOf(WriteClient::class, $client->supplierServicePricingOption());
+        $this->assertInstanceOf(WriteClient::class, $client->travelSeason());
+        $this->assertInstanceOf(WriteClient::class, $client->travel());
+        $this->assertInstanceOf(WriteClient::class, $client->travelBrick());
+        $this->assertInstanceOf(WriteClient::class, $client->travelBrickAccommodation());
+        $this->assertInstanceOf(WriteClient::class, $client->travelDate());
+        $this->assertInstanceOf(WriteClient::class, $client->travelPassenger());
+        $this->assertInstanceOf(WriteClient::class, $client->recordFollwoer());
+        $this->assertInstanceOf(WriteClient::class, $client->relation());
+        $this->assertInstanceOf(WriteClient::class, $client->resource());
+        $this->assertInstanceOf(WriteClient::class, $client->resourceRecord());
+        $this->assertInstanceOf(WriteClient::class, $client->role());
+        $this->assertInstanceOf(WriteClient::class, $client->operationBooking());
+        $this->assertInstanceOf(WriteClient::class, $client->operationBookingCancelationFee());
+        $this->assertInstanceOf(WriteClient::class, $client->operationBookingService());
+        $this->assertInstanceOf(WriteClient::class, $client->operationPassenger());
+        $this->assertInstanceOf(WriteClient::class, $client->operationPayment());
+        $this->assertInstanceOf(WriteClient::class, $client->operationRequest());
+        $this->assertInstanceOf(WriteClient::class, $client->nonBookableContent());
+        $this->assertInstanceOf(WriteClient::class, $client->iternaryitem());
+        $this->assertInstanceOf(WriteClient::class, $client->iternaryitemAccomondation());
+        $this->assertInstanceOf(WriteClient::class, $client->iternaryitemService());
+        $this->assertInstanceOf(WriteClient::class, $client->importDataStatus());
+        $this->assertInstanceOf(WriteClient::class, $client->group());
+        $this->assertInstanceOf(WriteClient::class, $client->followup());
+        $this->assertInstanceOf(WriteClient::class, $client->filter());
+        $this->assertInstanceOf(WriteClient::class, $client->folder());
+        $this->assertInstanceOf(WriteClient::class, $client->file());
+        $this->assertInstanceOf(WriteClient::class, $client->emailTemplate());
+        $this->assertInstanceOf(WriteClient::class, $client->destination());
+        $this->assertInstanceOf(WriteClient::class, $client->contact());
+        $this->assertInstanceOf(WriteClient::class, $client->cloneStatus());
+        $this->assertInstanceOf(WriteClient::class, $client->comment());
+        $this->assertInstanceOf(WriteClient::class, $client->cloudImportConfigs());
+        $this->assertInstanceOf(WriteClient::class, $client->cloneStatus());
+        $this->assertInstanceOf(WriteClient::class, $client->attribute());
+        $this->assertInstanceOf(WriteClient::class, $client->additionalField());
+        $this->assertInstanceOf(WriteClient::class, $client->additionalBookableService());
+
+        // Readonly
+        $this->assertInstanceOf(ReadClient::class, $client->subtype());
+        $this->assertInstanceOf(ReadClient::class, $client->roundtrip());
+        $this->assertInstanceOf(ReadClient::class, $client->mealType());
+        $this->assertInstanceOf(ReadClient::class, $client->language());
+        $this->assertInstanceOf(ReadClient::class, $client->additionalType());
+        $this->assertInstanceOf(ReadClient::class, $client->currency());
+        $this->assertInstanceOf(ReadClient::class, $client->country());
+        $this->assertInstanceOf(ReadClient::class, $client->airports());
+        $this->assertInstanceOf(ReadClient::class, $client->vacationRentalAmenity());
     }
 }

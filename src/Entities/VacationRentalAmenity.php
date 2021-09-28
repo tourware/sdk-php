@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tourware\Entities;
 
 
-class VacationRentalAmenity extends ReadonlyEntity
+class VacationRentalAmenity extends ReadEntity
 {
     public function endpoint(): string
     {

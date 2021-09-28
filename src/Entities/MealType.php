@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tourware\Entities;
 
 
-class MealType extends ReadonlyEntity
+class MealType extends ReadEntity
 {
     public function endpoint(): string
     {

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Tourware\Entities;
 
 
-class Subtype extends ReadonlyEntity
+class Subtype extends ReadEntity
 {
     public function endpoint(): string
     {

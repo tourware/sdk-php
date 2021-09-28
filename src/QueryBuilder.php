@@ -23,8 +23,7 @@ class QueryBuilder implements QueryBuilderInterface
     protected static null|Stream $stream = null;
 
     public function __construct(protected JSONClient $http, protected Entity $entity)
-    {
-    }
+    { }
 
     public static function fakeStream(Stream $stream)
     {
