@@ -8,10 +8,7 @@ use GuzzleHttp\Psr7\Stream;
 use GuzzleHttp\Psr7\Utils;
 use PHPUnit\Framework\MockObject\MockObject;
 use Sigmie\Http\Contracts\JSONClient;
-use Sigmie\Http\Contracts\JSONResponse;
 use Tourware\Client;
-use Tourware\Operator\Contains;
-use Tourware\Orders\Asc;
 use Tourware\QueryBuilder;
 
 class TestCase extends \PHPUnit\Framework\TestCase

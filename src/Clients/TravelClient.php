@@ -7,7 +7,6 @@ namespace Tourware\Clients;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\QueryBuilder as QueryBuilderInterface;
 use Tourware\Entities\Travel;
-use Tourware\QueryBuilder;
 
 class TravelClient extends WriteClient
 {

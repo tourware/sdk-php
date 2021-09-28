@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Tourware\SDK;
 
-use Sigmie\Http\Contracts\JSONClient;
 use Sigmie\Http\Contracts\JSONResponse;
 use Tourware\Client;
 use Tourware\Operator\Contains;

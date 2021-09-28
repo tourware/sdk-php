@@ -4,21 +4,7 @@ declare(strict_types=1);
 
 namespace Tourware\Tests;
 
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Psr7\Stream;
-use GuzzleHttp\Psr7\Uri;
-use GuzzleHttp\Psr7\Utils;
-use PhpParser\Node\Expr\BinaryOp\Equal;
-use Sigmie\Http\Contracts\JSONClient;
-use Sigmie\Http\Contracts\JSONResponse;
-use Sigmie\Http\JSONRequest;
-use Tourware\Client;
 use Tourware\Entities\Travel;
-use Tourware\Operator\Contains;
-use Tourware\Operator\Equals;
-use Tourware\Operator\StartsWith;
-use Tourware\Orders\Asc;
-use Tourware\Orders\Desc;
 use Tourware\Requests\QueryRequest;
 
 class QueryBuilderOffsetTest extends TestCase

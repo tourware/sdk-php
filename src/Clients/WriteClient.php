@@ -6,8 +6,8 @@ namespace Tourware\Clients;
 
 use Sigmie\Http\Contracts\JSONClient;
 use Tourware\Contracts\Entity;
-use Tourware\Contracts\WriteClient as WriteClientInterface;
 use Tourware\Contracts\QueryBuilder;
+use Tourware\Contracts\WriteClient as WriteClientInterface;
 use Tourware\QueryBuilder as TourwareQueryBuilder;
 use Tourware\Shared\WriteRequests;
 
@@ -17,11 +17,6 @@ class WriteClient extends ReadClient implements WriteClientInterface
 
     public function __construct(protected JSONClient $http, protected Entity $entity)
     {
-    }
-
-    protected function endpoint(): string
-    {
-        return $this->entity->endpoint();
     }
 
     public function find(string $identifier): array
@@ -62,5 +57,10 @@ class WriteClient extends ReadClient implements WriteClientInterface
     public function query(): QueryBuilder
     {
         return new TourwareQueryBuilder($this->http, $this->entity);
+    }
+
+    protected function endpoint(): string
+    {
+        return $this->entity->endpoint();
     }
 }

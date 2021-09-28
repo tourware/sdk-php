@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Tourware\Entities;
 
 use Sigmie\Http\Contracts\JSONClient;
-use Tourware\Clients\BaseClient;
 use Tourware\Clients\ReadClient;
 use Tourware\Contracts\Entity as EntityInterface;
 use Tourware\Contracts\ReadClient as ReadClientInterface;

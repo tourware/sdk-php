@@ -7,7 +7,6 @@ namespace Tourware\Entities;
 use Sigmie\Http\Contracts\JSONClient;
 use Tourware\Clients\TravelClient;
 use Tourware\Contracts\WriteClient;
-use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
 class Travel extends WriteEntity
 {

@@ -57,6 +57,13 @@ class QueryBuilder implements QueryBuilderInterface
         return $this->http->request($request)->json('total');
     }
 
+    public function get(): array
+    {
+        $request = $this->createRequest();
+
+        return $this->http->request($request)->json();
+    }
+
     private function createRequest(): QueryRequest
     {
         $request = new QueryRequest(
@@ -67,15 +74,6 @@ class QueryBuilder implements QueryBuilderInterface
             limit: $this->limit
         );
 
-        $request = (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);
-
-        return $request;
-    }
-
-    public function get(): array
-    {
-        $request = $this->createRequest();
-
-        return $this->http->request($request)->json();
+        return (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);
     }
 }
