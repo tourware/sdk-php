@@ -10,6 +10,6 @@ class Country extends BaseEntity
 {
     public function alias(): string
     {
-        return 'countries ';
+        return 'countries';
     }
 }
