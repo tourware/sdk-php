@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class NonBookableContent extends BaseEntity
+class NonBookableContent extends WriteEntity
 {
     public function endpoint(): string
     {

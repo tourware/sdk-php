@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class CloudImportConfig extends BaseEntity
+class CloudImportConfig extends WriteEntity
 {
     public function endpoint(): string
     {

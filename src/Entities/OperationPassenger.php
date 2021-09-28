@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class OperationPassenger extends BaseEntity
+class OperationPassenger extends WriteEntity
 {
     public function endpoint(): string
     {

@@ -9,7 +9,7 @@ use Tourware\Clients\TravelClient;
 use Tourware\Contracts\WriteClient;
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class Travel extends BaseEntity
+class Travel extends WriteEntity
 {
     public function endpoint(): string
     {

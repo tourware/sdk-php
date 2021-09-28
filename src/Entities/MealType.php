@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class MealType extends BaseEntity
+class MealType extends ReadonlyEntity
 {
     public function endpoint(): string
     {

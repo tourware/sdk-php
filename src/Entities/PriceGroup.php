@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class PriceGroup extends BaseEntity
+class PriceGroup extends WriteEntity
 {
     public function endpoint(): string
     {

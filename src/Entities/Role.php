@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class Role extends BaseEntity
+class Role extends WriteEntity
 {
     public function endpoint(): string
     {

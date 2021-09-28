@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class SupplierServicePricingOption extends BaseEntity
+class SupplierServicePricingOption extends WriteEntity
 {
     public function endpoint(): string
     {

@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class SupplierServiceContingent extends BaseEntity
+class SupplierServiceContingent extends WriteEntity
 {
     public function endpoint(): string
     {

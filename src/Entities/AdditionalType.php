@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tourware\Entities;
 
-use Tourware\Entities\ReadonlyEntity as BaseEntity;
+use Tourware\Entities\ReadonlyEntity;
 
-class AdditionalType extends BaseEntity
+class AdditionalType extends ReadonlyEntity
 {
     public function endpoint(): string
     {

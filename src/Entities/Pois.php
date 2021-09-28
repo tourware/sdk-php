@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class Pois extends BaseEntity
+class Pois extends WriteEntity
 {
     public function endpoint(): string
     {

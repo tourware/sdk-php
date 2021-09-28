@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class EmailTemplate extends BaseEntity
+class EmailTemplate extends WriteEntity
 {
     public function endpoint(): string
     {

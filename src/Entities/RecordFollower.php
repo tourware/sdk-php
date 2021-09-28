@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class RecordFollower extends BaseEntity
+class RecordFollower extends WriteEntity
 {
     public function endpoint(): string
     {

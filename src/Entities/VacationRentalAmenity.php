@@ -6,7 +6,7 @@ namespace Tourware\Entities;
 
 use Tourware\Entities\ReadonlyEntity as BaseEntity;
 
-class VacationRentalAmenity extends BaseEntity
+class VacationRentalAmenity extends ReadonlyEntity
 {
     public function endpoint(): string
     {
