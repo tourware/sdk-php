@@ -1,11 +1,11 @@
-# Tourware API SDK
+# tourware© API SDK
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-github]][link-github]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Official PHP client for the Tourware API. Its goal is to provide common ground for all Tourware-related code in PHP.
+Official PHP client for the Tourware API. Its goal is to provide common ground for all tourware©-related code in PHP.
 
 ## Install
 
