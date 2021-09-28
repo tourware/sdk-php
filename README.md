@@ -1,4 +1,4 @@
-# tourware© API SDK
+# tourware© API PHP SDK
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
