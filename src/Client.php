@@ -9,10 +9,15 @@ use Sigmie\Http\JSONClient;
 use Tourware\Auth\Authentication;
 use Tourware\Clients\AccomondationsClient;
 use Tourware\Clients\TravelClient;
+use Tourware\Clients\WriteClient as ClientsWriteClient;
+use Tourware\Contracts\Entity;
 use Tourware\Contracts\ReadClient;
+use Tourware\Contracts\WriteClient;
 use Tourware\Entities\Accomondation;
 use Tourware\Entities\Airport;
+use Tourware\Entities\Raw;
 use Tourware\Entities\Travel;
+use Tourware\Entities\WriteEntity;
 use Tourware\Shared\Clients;
 
 class Client
@@ -30,5 +35,15 @@ class Client
         $client = JSONClient::create($url, new Authentication($xApiKey));
 
         return new static($client);
+    }
+
+    public function raw(string $endpoint): WriteClient
+    {
+        return (new Raw($endpoint))->client($this->http);
+    }
+
+    public function entity(Entity $entity): ReadClient|WriteEntity
+    {
+        return $entity->client($this->http);
     }
 }
