@@ -13,6 +13,6 @@ class ApiRequest extends JSONRequest
     {
         $uri = new Uri("/api/{$uri}");
 
-        parent::__construct($method, $uri, $this->headers, ['bar']);
+        parent::__construct($method, $uri, $body);
     }
 }
