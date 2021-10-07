@@ -17,6 +17,7 @@ trait WriteRequests
     {
         self::$stream = $stream;
     }
+
     abstract protected function endpoint(): string;
 
     protected function updateRequest(string $identifier, array $payload): JSONRequest

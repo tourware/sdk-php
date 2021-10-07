@@ -15,22 +15,28 @@ class ReadClient implements ReadClientInterface
 {
     use ReadRequests;
 
-    public function __construct(protected JSONClient $http, protected Entity $entity)
-    {
+    public function __construct(
+        protected JSONClient $http,
+        protected Entity $entity
+    ) {
     }
 
     public function find(string $identifier): array
     {
         $request = $this->showRequest($identifier);
 
-        return $this->http->request($request)->json();
+        $json = $this->http->request($request)->json();
+
+        return (isset($json['records']) && isset($json['records'][0])) ? $json['records'][0] : [];
     }
 
     public function list(int $offset = 0, int $limit = 50): array
     {
         $request = $this->listRequest($offset, $limit);
 
-        return $this->http->request($request)->json();
+        $json = $this->http->request($request)->json();
+
+        return (isset($json['records'])) ? $json['records'] : [];
     }
 
     public function query(): QueryBuilder
