@@ -2,21 +2,20 @@
 
 All notable changes to `sdk-php` will be documented in this file.
 
-Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## NEXT - YYYY-MM-DD
+## [Unreleased]
 
-### Added
-- Nothing
+## [0.2.0] - 2021-10-16
 
-### Deprecated
-- Nothing
+🚀 **Compatibility with PHP 7.4**
 
-### Fixed
-- Nothing
+- Changed minimum PHP version from ^8.0 to ^7.4 
 
-### Removed
-- Nothing
+## [0.1.0] - 2021-10-07
 
-### Security
-- Nothing
+- Initial release 
+
+[Unreleased]: https://github.com/tourware/sdk-php/compare/v0.1.0...v0.2.0
+[0.11.0]: https://github.com/tourware/sdk-php/compare/v0.1.0...v0.2.0
