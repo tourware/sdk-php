@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace Tourware\Entities;
 
-use Sigmie\Http\Contracts\JSONClient;
+use GuzzleHttp\Client as Http;
 use Tourware\Clients\WriteClient as WriteClient;
 use Tourware\Contracts\WriteClient as WriteClientInterface;
 
 class Raw extends WriteEntity
 {
-    public function __construct(protected string $endpoint)
+    protected string $endpoint;
+
+    public function __construct(string $endpoint)
     {
+        $this->endpoint = $endpoint;
     }
 
     public function endpoint(): string
@@ -19,7 +22,7 @@ class Raw extends WriteEntity
         return $this->endpoint;
     }
 
-    public function client(JSONClient $http): WriteClientInterface
+    public function client(Http $http): WriteClientInterface
     {
         return new WriteClient($http, $this);
     }

@@ -10,7 +10,10 @@ interface Filter
 
     public function operator(): string;
 
-    public function value(): string|array|bool|int;
+    /**
+     * @return string|array|bool|int
+     */
+    public function value();
 
     public function raw(): array;
 }

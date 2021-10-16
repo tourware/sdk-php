@@ -9,8 +9,17 @@ use Tourware\Query\Property;
 
 class Not implements Filter
 {
-    public function __construct(protected string $property, protected int|bool|string $value)
+    protected string $property;
+
+    /**
+     * @var int|bool|string
+     */
+    protected $value;
+
+    public function __construct(string $property, $value)
     {
+        $this->property = $property;
+        $this->value = $value;
     }
 
     public function property(): string
@@ -23,7 +32,10 @@ class Not implements Filter
         return 'not';
     }
 
-    public function value(): string|array|bool|int
+    /**
+     * @return string|array|bool|int
+     */
+    public function value()
     {
         return $this->value;
     }

@@ -4,28 +4,35 @@ declare(strict_types=1);
 
 namespace Tourware\Clients;
 
-use Sigmie\Http\Contracts\JSONClient;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\QueryBuilder;
 use Tourware\Contracts\ReadClient as ReadClientInterface;
 use Tourware\QueryBuilder as TourwareQueryBuilder;
 use Tourware\Shared\ReadRequests;
+    use GuzzleHttp\Client as Http;
+    use Psr\Http\Message\RequestInterface;
+use Tourware\Shared\SendRequest;
 
 class ReadClient implements ReadClientInterface
 {
-    use ReadRequests;
+    use ReadRequests,
+        SendRequest;
 
-    public function __construct(
-        protected JSONClient $http,
-        protected Entity $entity
-    ) {
+    protected Http $http;
+
+    protected Entity $entity;
+
+    public function __construct(Http $http, Entity $entity)
+    {
+        $this->http = $http;
+        $this->entity = $entity;
     }
 
     public function find(string $identifier): array
     {
         $request = $this->showRequest($identifier);
 
-        $json = $this->http->request($request)->json();
+        $json = $this->sendRequest($request);
 
         return (isset($json['records']) && isset($json['records'][0])) ? $json['records'][0] : [];
     }
@@ -34,7 +41,7 @@ class ReadClient implements ReadClientInterface
     {
         $request = $this->listRequest($offset, $limit);
 
-        $json = $this->http->request($request)->json();
+        $json = $this->sendRequest($request);
 
         return (isset($json['records'])) ? $json['records'] : [];
     }

@@ -9,8 +9,14 @@ use Tourware\Query\Property;
 
 class Contains implements Filter
 {
-    public function __construct(protected string $property, protected string $text)
+    protected string $property;
+
+    protected string $text;
+
+    public function __construct(string $property, string $text)
     {
+        $this->property = $property;
+        $this->text = $text;
     }
 
     public function property(): string
@@ -23,7 +29,10 @@ class Contains implements Filter
         return 'contains';
     }
 
-    public function value(): string|array|bool|int
+    /**
+     * @return string|array|bool|int
+     */
+    public function value()
     {
         return $this->text;
     }

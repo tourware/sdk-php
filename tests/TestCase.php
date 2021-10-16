@@ -8,35 +8,39 @@ use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Stream;
 use GuzzleHttp\Psr7\Utils;
 use PHPUnit\Framework\MockObject\MockObject;
-use Sigmie\Http\Contracts\JSONClient;
-use Sigmie\Http\Contracts\JSONResponse;
 use Sigmie\Http\JSONResponse as HttpJSONResponse;
 use Tourware\Client;
 use Tourware\Clients\ReadClient;
 use Tourware\Clients\WriteClient;
 use Tourware\QueryBuilder;
+use GuzzleHttp\Client as Http;
+use Psr\Http\Message\ResponseInterface;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
-    protected JSONClient|MockObject $httpMock;
+    /**
+     * @var Http|MockObject
+     */
+    protected $httpMock;
 
     protected Client $client;
 
     protected Stream $fakeStream;
 
-    protected JSONResponse|MockObject $responseMock;
+    /**
+     * @var ResponseInterface|MockObject
+     */
+    protected $responseMock;
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->httpMock = $this->createMock(JSONClient::class);
+        $this->httpMock = $this->createMock(Http::class);
 
-        $this->httpMock->method('request')->willReturn(
-            new HttpJSONResponse(
-                new Response(body: '[]')
-            )
-        );
+        $this->httpMock
+            ->method('sendRequest')
+            ->willReturn(new Response(200, [], json_encode(['total' => 0])));
 
         $this->client = new Client($this->httpMock);
 

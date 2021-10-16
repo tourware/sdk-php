@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Tourware\Shared;
 
 use GuzzleHttp\Psr7\Stream;
-use Sigmie\Http\Contracts\JSONRequest;
+use Psr\Http\Message\RequestInterface;
 use Tourware\Requests\ApiRequest;
 
 trait WriteRequests
 {
 
-    protected static null|Stream $stream = null;
+    protected static ?Stream $stream = null;
 
     public static function fakeStream(Stream $stream)
     {
@@ -20,21 +20,21 @@ trait WriteRequests
 
     abstract protected function endpoint(): string;
 
-    protected function updateRequest(string $identifier, array $payload): JSONRequest
+    protected function updateRequest(string $identifier, array $payload): RequestInterface
     {
         $request = new ApiRequest('PUT', "{$this->endpoint()}/{$identifier}", $payload);
 
         return (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);
     }
 
-    protected function destroyRequest(string $indetifier): JSONRequest
+    protected function destroyRequest(string $indetifier): RequestInterface
     {
         $request =  new ApiRequest('DELETE', "{$this->endpoint()}/{$indetifier}");
 
         return (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);
     }
 
-    protected function createRequest(array $payload): JSONRequest
+    protected function createRequest(array $payload): RequestInterface
     {
         $request = new ApiRequest('POST', "{$this->endpoint()}", $payload);
 

@@ -17,14 +17,14 @@ trait Sort
         return new SortBuilder($property, $this);
     }
 
-    public function addSort(SortInterface $sort): static
+    public function addSort(SortInterface $sort): self
     {
         $this->sort[] = $sort->raw();
 
         return $this;
     }
 
-    public function addRawSort(array $sort): static
+    public function addRawSort(array $sort): self
     {
         $this->sort[] = $sort;
 

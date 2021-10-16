@@ -5,16 +5,22 @@ declare(strict_types=1);
 namespace Tourware\Sort;
 
 use Tourware\Contracts\QueryBuilder;
-use Tourware\Contracts\SortBuilder as SortBulderInterface;
+use Tourware\Contracts\SortBuilder as SortBuilderInterface;
 use Tourware\Orders\Asc;
 use Tourware\Orders\Desc;
 
-class SortBuilder implements SortBulderInterface
+class SortBuilder implements SortBuilderInterface
 {
+    protected string $property;
+
+    protected QueryBuilder $builder;
+
     public function __construct(
-        private string $property,
-        private QueryBuilder $builder
+        string $property,
+        QueryBuilder $builder
     ) {
+        $this->property = $property;
+        $this->builder = $builder;
     }
 
     public function asc(): QueryBuilder

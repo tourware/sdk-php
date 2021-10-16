@@ -17,13 +17,22 @@ use Tourware\Operator\StartsWith;
 
 class FilterBuilder implements FilterBuilderInterface
 {
+    private string $property;
+
+    private QueryBuilder $builder;
+
     public function __construct(
-        private string $property,
-        private QueryBuilder $builder
+        string $property,
+        QueryBuilder $builder
     ) {
+        $this->property = $property;
+        $this->builder = $builder;
     }
 
-    public function equals(int|string|bool $value): QueryBuilder
+    /**
+     * @param int|string|bool $value
+     */
+    public function equals($value): QueryBuilder
     {
         $operator = new Equals($this->property, $value);
 
@@ -32,7 +41,10 @@ class FilterBuilder implements FilterBuilderInterface
         return $this->builder;
     }
 
-    public function lessThan(int $number): QueryBuilder
+    /**
+     * @param int|string $number
+     */
+    public function lessThan($number): QueryBuilder
     {
         $operator = new LessThan($this->property, $number);
 
@@ -41,7 +53,10 @@ class FilterBuilder implements FilterBuilderInterface
         return $this->builder;
     }
 
-    public function greaterThan(int $number): QueryBuilder
+    /**
+     * @param int|string $number
+     */
+    public function greaterThan($number): QueryBuilder
     {
         $operator = new GreaterThan($this->property, $number);
 
@@ -50,7 +65,10 @@ class FilterBuilder implements FilterBuilderInterface
         return $this->builder;
     }
 
-    public function not(int|bool|string $value): QueryBuilder
+    /**
+     * @param int|bool|string $value
+     */
+    public function not($value): QueryBuilder
     {
         $operator = new Not($this->property, $value);
 

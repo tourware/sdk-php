@@ -17,14 +17,14 @@ trait Filter
         return new FilterBuilder($property, $this);
     }
 
-    public function addFilter(FilterInterface $filter): static
+    public function addFilter(FilterInterface $filter): self
     {
         $this->filters[] = $filter->raw();
 
         return $this;
     }
 
-    public function addRawFilter(array $filter): static
+    public function addRawFilter(array $filter): self
     {
         $this->filters[] = $filter;
 

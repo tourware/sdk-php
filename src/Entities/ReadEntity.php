@@ -8,10 +8,11 @@ use Sigmie\Http\Contracts\JSONClient;
 use Tourware\Clients\ReadClient;
 use Tourware\Contracts\Entity as EntityInterface;
 use Tourware\Contracts\ReadClient as ReadClientInterface;
+use GuzzleHttp\Client as Http;
 
 abstract class ReadEntity implements EntityInterface
 {
-    public function client(JSONClient $http): ReadClientInterface
+    public function client(Http $http): ReadClientInterface
     {
         return new ReadClient($http, $this);
     }

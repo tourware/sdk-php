@@ -21,12 +21,12 @@ class QueryRequestTest extends TestCase
     {
         $queryRequest = new QueryRequest(
             new Travel,
-            filters: [
+            [
                 (new Equals('foo', 'bar'))->raw(),
                 (new StartsWith('mickey', 'mouse'))->raw(),
                 (new EndsWith('nemo', 'dorry'))->raw(),
             ],
-            sort: [
+            [
                 (new Asc('toy'))->raw(),
                 (new Desc('story'))->raw(),
             ]

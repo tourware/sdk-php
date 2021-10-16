@@ -8,8 +8,17 @@ use Tourware\Contracts\Filter;
 
 class Equals implements Filter
 {
-    public function __construct(protected string $property, protected int|string|bool $value)
+    protected string $property;
+
+    /**
+     * @var int|string|bool
+     */
+    protected $value;
+
+    public function __construct(string $property, $value)
     {
+        $this->property = $property;
+        $this->value = $value;
     }
 
     public function property(): string
@@ -22,7 +31,10 @@ class Equals implements Filter
         return 'equals';
     }
 
-    public function value(): string|array|bool|int
+    /**
+     * @return string|array|bool|int
+     */
+    public function value()
     {
         return $this->value;
     }

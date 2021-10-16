@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Tourware;
 
-use Sigmie\Http\Contracts\JSONClient as JSONClientInterface;
-use Sigmie\Http\JSONClient;
-use Tourware\Auth\Authentication;
+use GuzzleHttp\Client as Http;
+use Tourware\Auth\Headers;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\ReadClient;
 use Tourware\Contracts\WriteClient;
@@ -18,17 +17,28 @@ class Client
 {
     use Clients;
 
-    final public function __construct(protected JSONClientInterface $http)
+    protected Http $http;
+
+    public function __construct(Http $http)
     {
+        $this->http = $http;
     }
 
     public static function create(string $xApiKey, bool $staging = true)
     {
         $url = $staging ? 'https://app-staging.tourware.net' : 'https://app.tourware.net';
 
-        $client = JSONClient::create($url, new Authentication($xApiKey));
+        $auth = new Headers($xApiKey);
+        $config = [
+            'base_uri' => $url,
+            'allow_redirects' => false,
+            'http_errors' => false,
+            'connect_timeout' => 1
+        ];
 
-        return new static($client);
+        $config = array_merge($config, $auth());
+
+        return new static(new Http($config));
     }
 
     public function raw(string $endpoint): WriteClient
@@ -36,7 +46,7 @@ class Client
         return (new Raw($endpoint))->client($this->http);
     }
 
-    public function entity(Entity $entity): ReadClient|WriteEntity
+    public function entity(Entity $entity): ReadClient
     {
         return $entity->client($this->http);
     }

@@ -9,8 +9,14 @@ use Tourware\Query\Property;
 
 class GreaterThan implements Filter
 {
-    public function __construct(protected string $property, protected int $number)
+    protected string $property;
+
+    protected int $number;
+
+    public function __construct(string $property, int $number)
     {
+        $this->property = $property;
+        $this->number = $number;
     }
 
     public function property(): string
@@ -23,7 +29,10 @@ class GreaterThan implements Filter
         return 'greaterThan';
     }
 
-    public function value(): string|array|bool|int
+    /**
+     * @return string|array|bool|int
+     */
+    public function value()
     {
         return $this->number;
     }

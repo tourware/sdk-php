@@ -4,30 +4,48 @@ declare(strict_types=1);
 
 namespace Tourware\Contracts;
 
-use Sigmie\Http\Contracts\JSONRequest;
-use Sigmie\Http\Contracts\JSONResponse;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 interface QueryBuilder
 {
-    public function addFilter(Filter $filter): static;
+    /**
+     * @return static
+     */
+    public function addFilter(Filter $filter);
 
-    public function addRawFilter(array $filter): static;
+    /**
+     * @return static
+     */
+    public function addRawFilter(array $filter);
 
-    public function addSort(Sort $sort): static;
+    /**
+     * @return static
+     */
+    public function addSort(Sort $sort);
 
-    public function addRawSort(array $sort): static;
+    /**
+     * @return static
+     */
+    public function addRawSort(array $sort);
 
     public function sort(string $property): SortBuilder;
 
     public function filter(string $property): FilterBuilder;
 
-    public function offset(int $offset): static;
+    /**
+     * @return static
+     */
+    public function offset(int $offset);
 
-    public function limit(int $limit): static;
+    /**
+     * @return static
+     */
+    public function limit(int $limit);
 
-    public function request(): JSONRequest;
+    public function request(): RequestInterface;
 
-    public function response(): JSONResponse;
+    public function response(): ResponseInterface;
 
     public function total(): int;
 

@@ -8,7 +8,7 @@ trait Offset
 {
     private int $offset = 0;
 
-    public function offset(int $int): static
+    public function offset(int $int): self
     {
         $this->offset = $int;
 

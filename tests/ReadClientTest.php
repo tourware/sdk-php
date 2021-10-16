@@ -20,7 +20,7 @@ class ReadClientTest extends TestCase
         );
         $apiRequest = $apiRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($apiRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($apiRequest);
 
         $this->client->raw('foo')->find('bar');
     }
@@ -37,7 +37,7 @@ class ReadClientTest extends TestCase
         );
         $apiRequest = $apiRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($apiRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($apiRequest);
 
         $this->client->raw('foo')->list();
     }

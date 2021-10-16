@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace Tourware\Entities;
 
-use Sigmie\Http\Contracts\JSONClient;
 use Tourware\Clients\WriteClient;
 use Tourware\Contracts\Entity as EntityInterface;
+use GuzzleHttp\Client as Http;
 
 abstract class WriteEntity implements EntityInterface
 {
-    public function client(JSONClient $http)
+    public function client(Http $http)
     {
         return new WriteClient($http, $this);
     }

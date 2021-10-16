@@ -16,15 +16,17 @@ class QueryBuilderOffsetTest extends TestCase
     {
         $queryRequest = new QueryRequest(
             new Travel,
-            offset: 0
+            [],
+            [],
+            0,
         );
 
         $queryRequest = $queryRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($queryRequest);
 
         $this->client->travel()->query()
-        ->get();
+            ->get();
     }
     /**
      * @test
@@ -33,15 +35,17 @@ class QueryBuilderOffsetTest extends TestCase
     {
         $queryRequest = new QueryRequest(
             new Travel,
-            offset: 100
+            [],
+            [],
+            100,
         );
 
         $queryRequest = $queryRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($queryRequest);
 
         $this->client->travel()->query()
-        ->offset(100)
-        ->get();
+            ->offset(100)
+            ->get();
     }
 }

@@ -26,7 +26,7 @@ class QueryBuilderFilterTest extends TestCase
         );
         $queryRequest = $queryRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($queryRequest);
 
         $this->client->travel()->query()->filter('foo')->equals('bar')->get();
     }
@@ -42,15 +42,15 @@ class QueryBuilderFilterTest extends TestCase
 
         $queryRequest = new QueryRequest(
             new Travel,
-            filters: [
+            [
                 $equals,
                 $startsWith
             ],
-            sort: [],
+            [],
         );
         $queryRequest = $queryRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($queryRequest);
 
         $this->client->travel()->query()
             ->filter('foo')->equals('bar')
@@ -67,14 +67,14 @@ class QueryBuilderFilterTest extends TestCase
 
         $queryRequest = new QueryRequest(
             new Travel,
-            filters: [
+            [
                 ['property' => 'foo', 'operator' => 'equals', 'value' => 'bar']
             ],
-            sort: [],
+            [],
         );
         $queryRequest = $queryRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($queryRequest);
 
         $this->client->travel()->query()
             ->addFilter($equals)
@@ -90,14 +90,14 @@ class QueryBuilderFilterTest extends TestCase
 
         $queryRequest = new QueryRequest(
             new Travel,
-            filters: [
+            [
                 ['property' => 'foo', 'operator' => 'equals', 'value' => 'bar']
             ],
-            sort: [],
+            [],
         );
         $queryRequest = $queryRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($queryRequest);
 
         $this->client->travel()->query()
             ->addRawFilter($equals)

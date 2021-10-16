@@ -16,16 +16,19 @@ class QueryBuilderLimitTest extends TestCase
     {
         $queryRequest = new QueryRequest(
             new Travel,
-            limit: 200
+            [],
+            [],
+            0,
+            200
         );
 
         $queryRequest = $queryRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($queryRequest);
 
         $this->client->travel()->query()
-        ->limit(200)
-        ->get();
+            ->limit(200)
+            ->get();
     }
     /**
      * @test
@@ -34,14 +37,16 @@ class QueryBuilderLimitTest extends TestCase
     {
         $queryRequest = new QueryRequest(
             new Travel,
-            limit: 100
+            [],
+            [],
+            0,
         );
 
         $queryRequest = $queryRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($queryRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($queryRequest);
 
         $this->client->travel()->query()
-        ->get();
+            ->get();
     }
 }

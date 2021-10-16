@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace Tourware;
 
 use GuzzleHttp\Psr7\Stream;
-use Sigmie\Http\Contracts\JSONClient;
-use Sigmie\Http\Contracts\JSONRequest;
-use Sigmie\Http\Contracts\JSONResponse;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\QueryBuilder as QueryBuilderInterface;
 use Tourware\Requests\QueryRequest;
@@ -15,6 +12,10 @@ use Tourware\Shared\Filter;
 use Tourware\Shared\Limit;
 use Tourware\Shared\Offset;
 use Tourware\Shared\Sort;
+use GuzzleHttp\Client as Http;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
+use Tourware\Shared\SendRequest;
 
 class QueryBuilder implements QueryBuilderInterface
 {
@@ -22,11 +23,18 @@ class QueryBuilder implements QueryBuilderInterface
     use Filter;
     use Offset;
     use Limit;
+    use SendRequest;
 
-    protected static null|Stream $stream = null;
+    protected Http $http;
 
-    public function __construct(protected JSONClient $http, protected Entity $entity)
+    protected Entity $entity;
+
+    protected static ?Stream $stream = null;
+
+    public function __construct(Http $http, Entity $entity)
     {
+        $this->http = $http;
+        $this->entity = $entity;
     }
 
     public static function fakeStream(Stream $stream)
@@ -41,14 +49,14 @@ class QueryBuilder implements QueryBuilderInterface
         return $this;
     }
 
-    public function response(): JSONResponse
+    public function response(): ResponseInterface
     {
         $request = $this->createRequest();
 
-        return $this->http->request($request);
+        return $this->http->sendRequest($request);
     }
 
-    public function request(): JSONRequest
+    public function request(): RequestInterface
     {
         return $this->createRequest();
     }
@@ -57,24 +65,24 @@ class QueryBuilder implements QueryBuilderInterface
     {
         $request = $this->createRequest();
 
-        return $this->http->request($request)->json('total');
+        return $this->sendRequest($request)['total'];
     }
 
     public function get(): array
     {
         $request = $this->createRequest();
 
-        return $this->http->request($request)->json();
+        return $this->sendRequest($request);
     }
 
     private function createRequest(): QueryRequest
     {
         $request = new QueryRequest(
-            entity: $this->entity,
-            filters: $this->filters,
-            sort: $this->sort,
-            offset: $this->offset,
-            limit: $this->limit
+            $this->entity,
+            $this->filters,
+            $this->sort,
+            $this->offset,
+            $this->limit
         );
 
         return (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);

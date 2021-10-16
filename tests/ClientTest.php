@@ -22,7 +22,7 @@ class ClientTest extends TestCase
         );
         $apiRequest = $apiRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($apiRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($apiRequest);
 
         $this->client->travel()->create(['foo' => 'bar']);
     }
@@ -39,7 +39,7 @@ class ClientTest extends TestCase
         );
         $apiRequest = $apiRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($apiRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($apiRequest);
 
         $this->client->raw('foo')->create(['foo' => 'bar']);
     }
@@ -57,7 +57,7 @@ class ClientTest extends TestCase
         );
         $apiRequest = $apiRequest->withBody($this->fakeStream);
 
-        $this->httpMock->expects($this->once())->method('request')->with($apiRequest);
+        $this->httpMock->expects($this->once())->method('sendRequest')->with($apiRequest);
 
         $this->client->entity($entity)->create(['foo' => 'bar']);
     }

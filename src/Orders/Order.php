@@ -9,8 +9,11 @@ use Tourware\Query\Property;
 
 abstract class Order implements Sort
 {
-    public function __construct(protected string $property)
+    protected string $property;
+
+    public function __construct(string $property)
     {
+        $this->property = $property;
     }
 
     public function property(): string

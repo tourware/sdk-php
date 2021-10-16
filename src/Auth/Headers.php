@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace Tourware\Auth;
 
-use Sigmie\Http\Contracts\Auth;
 
-final class Authentication implements Auth
+final class Headers
 {
     private string $token;
 
@@ -15,10 +14,13 @@ final class Authentication implements Auth
         $this->token = $token;
     }
 
-    public function keys(): array
+    public function __invoke(): array
     {
         return [
-            'headers' => ['x-api-key' => "{$this->token}"]
+            'headers' => [
+                'x-api-key' => "{$this->token}",
+                'Content-Type' => 'application/json'
+            ]
         ];
     }
 }

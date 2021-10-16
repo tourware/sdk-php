@@ -9,8 +9,14 @@ use Tourware\Query\Property;
 
 class In implements Filter
 {
-    public function __construct(protected string $property, protected array $values)
+    protected string $property;
+
+    protected array $values;
+
+    public function __construct(string $property, array $values)
     {
+        $this->property = $property;
+        $this->values = $values;
     }
 
     public function property(): string
@@ -23,7 +29,10 @@ class In implements Filter
         return 'in';
     }
 
-    public function value(): string|array|bool|int
+    /**
+     * @return string|array|bool|int
+     */
+    public function value()
     {
         return $this->values;
     }

@@ -8,11 +8,20 @@ use Tourware\Contracts\Filter as FilterInterface;
 
 class Filter implements FilterInterface
 {
+    protected string $property;
+
+    protected string $operator;
+
+    protected string $value;
+
     public function __construct(
-        protected string $property,
-        protected string $operator,
-        protected string $value
+        string $property,
+        string $operator,
+        string $value
     ) {
+        $this->property = $property;
+        $this->operator = $operator;
+        $this->value = $value;
     }
 
     public function property(): string
@@ -25,7 +34,10 @@ class Filter implements FilterInterface
         return $this->operator;
     }
 
-    public function value(): string|array|bool|int
+    /**
+     * @return string|array|bool|int
+     */
+    public function value()
     {
         return $this->value;
     }

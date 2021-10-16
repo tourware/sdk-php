@@ -8,7 +8,7 @@ trait Limit
 {
     private int $limit = 100;
 
-    public function limit(int $int): static
+    public function limit(int $int):self
     {
         $this->limit = $int;
 
