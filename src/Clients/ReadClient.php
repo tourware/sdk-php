@@ -15,8 +15,8 @@ use Tourware\Shared\SendRequest;
 
 class ReadClient implements ReadClientInterface
 {
-    use ReadRequests,
-        SendRequest;
+    use ReadRequests;
+    use SendRequest;
 
     protected Http $http;
 

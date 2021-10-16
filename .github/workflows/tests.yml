@@ -6,17 +6,17 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
-jobs: 
+jobs:
   tests:
     runs-on: ubuntu-20.04
 
     strategy:
       fail-fast: true
       matrix:
-        php: ['8.0']
+        php: ['7.4']
         stability: [prefer-lowest, prefer-stable]
         include:
-          - php: '8.1'
+          - php: '7.4'
             flags: "--ignore-platform-req=php"
             stability: prefer-stable
 
@@ -43,10 +43,10 @@ jobs:
 
       - name: Execute tests
         continue-on-error: ${{ matrix.php > 8 }}
-        run: vendor/bin/paratest 
+        run: vendor/bin/paratest
 
       - name: PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=-1 src tests
 
       - name: PHP Code sniffer
-        run: ./vendor/bin/phpcbf --standard=PSR12 src
+        run: ./vendor/bin/phpcs --standard=PSR12 src

@@ -19,7 +19,7 @@ class Client
 
     protected Http $http;
 
-    public function __construct(Http $http)
+    final public function __construct(Http $http)
     {
         $this->http = $http;
     }
