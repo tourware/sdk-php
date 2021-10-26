@@ -9,8 +9,7 @@ use Tourware\Contracts\QueryBuilder;
 use Tourware\Contracts\ReadClient as ReadClientInterface;
 use Tourware\QueryBuilder as TourwareQueryBuilder;
 use Tourware\Shared\ReadRequests;
-    use GuzzleHttp\Client as Http;
-    use Psr\Http\Message\RequestInterface;
+use GuzzleHttp\Client as Http;
 use Tourware\Shared\SendRequest;
 
 class ReadClient implements ReadClientInterface
@@ -28,22 +27,22 @@ class ReadClient implements ReadClientInterface
         $this->entity = $entity;
     }
 
-    public function find(string $identifier): array
+    public function find(string $identifier): ?array
     {
         $request = $this->showRequest($identifier);
 
         $json = $this->sendRequest($request);
 
-        return (isset($json['records']) && isset($json['records'][0])) ? $json['records'][0] : [];
+        return $json->get('records.0');
     }
 
-    public function list(int $offset = 0, int $limit = 50): array
+    public function list(int $offset = 0, int $limit = 50): ?array
     {
         $request = $this->listRequest($offset, $limit);
 
         $json = $this->sendRequest($request);
 
-        return (isset($json['records'])) ? $json['records'] : [];
+        return $json->get('records');
     }
 
     public function query(): QueryBuilder
