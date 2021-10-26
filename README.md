@@ -84,6 +84,18 @@ $response = $client->travel()->delete('bba0b42e4699');
 
 The query builder provides a variety of method helping you filter your entities.
 
+#### Dot nottation
+When your are retrieving your query results. You can access them by using
+dot nottation.
+
+Eg.:
+```php
+$travels = $client->travel()->query()->filter('title')->contains('kenya')->get();
+
+//The the first name for the resposible user
+$travels->get('records.0.responsibleUser.firstname');
+```
+
 #### Filter
 Let's say that you wan't to filter your **travels** and get only records which contain the 
 word "kenya".

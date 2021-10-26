@@ -17,30 +17,30 @@ class WriteClient extends ReadClient implements WriteClientInterface
 
     protected Entity $entity;
 
-    public function create(array $values): array
+    public function create(array $values): ?array
     {
         $request = $this->createRequest($values);
 
         $json = $this->sendRequest($request);
 
-        return (isset($json['records']) && isset($json['records'][0])) ? $json['records'][0] : [];
+        return $json->get('records.0');
     }
 
-    public function update(string $identifier, array $values): array
+    public function update(string $identifier, array $values): ?array
     {
         $request = $this->updateRequest($identifier, $values);
 
         $json = $this->sendRequest($request);
 
-        return (isset($json['records']) && isset($json['records'][0])) ? $json['records'][0] : [];
+        return $json->get('records.0');
     }
 
-    public function delete(string $identifier): array
+    public function delete(string $identifier): ?array
     {
         $request = $this->destroyRequest($identifier);
 
         $json = $this->sendRequest($request);
 
-        return (isset($json[0])) ? $json[0] : [];
+        return $json->get('0');
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tourware;
 
+use ArrayAccess;
 use GuzzleHttp\Psr7\Stream;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\QueryBuilder as QueryBuilderInterface;
@@ -68,7 +69,7 @@ class QueryBuilder implements QueryBuilderInterface
         return $this->sendRequest($request)['total'];
     }
 
-    public function get(): array
+    public function get(): ArrayAccess
     {
         $request = $this->createRequest();
 
