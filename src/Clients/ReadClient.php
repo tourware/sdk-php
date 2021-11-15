@@ -42,6 +42,8 @@ class ReadClient implements ReadClientInterface
 
         $json = $this->sendRequest($request);
 
+        dd($json);
+
         return $json->get('records');
     }
 
