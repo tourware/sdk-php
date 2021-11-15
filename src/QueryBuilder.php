@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace Tourware;
 
 use ArrayAccess;
+use GuzzleHttp\Client as Http;
 use GuzzleHttp\Psr7\Stream;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\QueryBuilder as QueryBuilderInterface;
 use Tourware\Requests\QueryRequest;
 use Tourware\Shared\Filter;
 use Tourware\Shared\Limit;
 use Tourware\Shared\Offset;
-use Tourware\Shared\Sort;
-use GuzzleHttp\Client as Http;
-use Psr\Http\Message\RequestInterface;
-use Psr\Http\Message\ResponseInterface;
 use Tourware\Shared\SendRequest;
+use Tourware\Shared\Sort;
 
 class QueryBuilder implements QueryBuilderInterface
 {

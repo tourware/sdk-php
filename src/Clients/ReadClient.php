@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Tourware\Clients;
 
+use GuzzleHttp\Client as Http;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\QueryBuilder;
 use Tourware\Contracts\ReadClient as ReadClientInterface;
 use Tourware\QueryBuilder as TourwareQueryBuilder;
 use Tourware\Shared\ReadRequests;
-use GuzzleHttp\Client as Http;
 use Tourware\Shared\SendRequest;
 
 class ReadClient implements ReadClientInterface

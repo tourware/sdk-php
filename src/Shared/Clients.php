@@ -11,6 +11,7 @@ use Tourware\Entities\AccommodationContingent;
 use Tourware\Entities\AccommodationPeriod;
 use Tourware\Entities\AccommodationPricingOption;
 use Tourware\Entities\Accomondation;
+use Tourware\Entities\Activities;
 use Tourware\Entities\AdditionalBookableService;
 use Tourware\Entities\AdditionalField;
 use Tourware\Entities\AdditionalType;
@@ -364,6 +365,11 @@ trait Clients
     public function travelBrickAccommodation(): WriteClient
     {
         return (new TravelBrickAccommodation())->client($this->http);
+    }
+
+    public function activities(): WriteClient
+    {
+        return (new Activities())->client($this->http);
     }
 
     public function travelDate(): WriteClient

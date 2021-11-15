@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Tourware\Entities;
 
+use GuzzleHttp\Client as Http;
 use Tourware\Clients\WriteClient;
 use Tourware\Contracts\Entity as EntityInterface;
-use GuzzleHttp\Client as Http;
 
 abstract class WriteEntity implements EntityInterface
 {

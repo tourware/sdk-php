@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace Tourware\Entities;
 
-use Sigmie\Http\Contracts\JSONClient;
+use GuzzleHttp\Client as Http;
 use Tourware\Clients\ReadClient;
 use Tourware\Contracts\Entity as EntityInterface;
 use Tourware\Contracts\ReadClient as ReadClientInterface;
-use GuzzleHttp\Client as Http;
 
 abstract class ReadEntity implements EntityInterface
 {
