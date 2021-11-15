@@ -10,7 +10,6 @@ use Tourware\Contracts\Entity;
 use Tourware\Contracts\ReadClient;
 use Tourware\Contracts\WriteClient;
 use Tourware\Entities\Raw;
-use Tourware\Entities\WriteEntity;
 use Tourware\Shared\Clients;
 
 class Client

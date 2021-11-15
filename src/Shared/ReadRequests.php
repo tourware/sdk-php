@@ -7,7 +7,6 @@ namespace Tourware\Shared;
 use GuzzleHttp\Psr7\Stream;
 use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\RequestInterface;
-use Sigmie\Http\Contracts\JSONRequest;
 use Tourware\Requests\ApiRequest;
 
 trait ReadRequests

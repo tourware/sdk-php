@@ -5,12 +5,8 @@ declare(strict_types=1);
 namespace Tourware\Shared;
 
 use Adbar\Dot;
-use ArrayAccess;
-use Psr\Http\Message\RequestInterface;
-use Tourware\Contracts\Sort as SortInterface;
-use Tourware\Contracts\SortBuilder as SortBuilderInterface;
-use Tourware\Sort\SortBuilder;
 use GuzzleHttp\Client as Http;
+use Psr\Http\Message\RequestInterface;
 
 trait SendRequest
 {
