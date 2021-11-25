@@ -43,7 +43,8 @@ jobs:
 
       - name: Execute tests
         continue-on-error: ${{ matrix.php > 8 }}
-        run: vendor/bin/paratest
+        # run: vendor/bin/paratest
+        run: vendor/bin/phpunit
 
       - name: PHPStan
         run: vendor/bin/phpstan analyse --memory-limit=-1 src tests

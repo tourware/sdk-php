@@ -12,8 +12,10 @@ use Psr\Http\Message\RequestInterface;
 
 trait LazyEach
 {
-    // protected int $chunk = 300;
-    protected int $chunk = 1;
+    /**
+     * 300 is the Tourware API limit
+     */
+    protected int $chunk = 300;
 
     abstract protected function paginatedRequest(int $offset, int $limit): RequestInterface;
 
@@ -32,7 +34,7 @@ trait LazyEach
 
         $total = (int) $res['total'];
 
-        foreach ($res['records'] as $record) {
+        foreach ($res->get('records', []) as $record) {
             yield $record;
         }
 
@@ -55,7 +57,7 @@ trait LazyEach
 
         $total = ($page - 1) * $this->chunk;
 
-        foreach ($res['records'] as $record) {
+        foreach ($res->get('records', []) as $record) {
 
             if ($total < $limit) {
                 yield $record;
