@@ -12,9 +12,10 @@ use Psr\Http\Message\RequestInterface;
 
 trait LazyEach
 {
-    protected int $chunk = 300;
+    // protected int $chunk = 300;
+    protected int $chunk = 1;
 
-    abstract protected function listRequest(int $offset, int $limit): RequestInterface;
+    abstract protected function paginatedRequest(int $offset, int $limit): RequestInterface;
 
     abstract protected function sendRequest(RequestInterface $request): Dot;
 
@@ -22,7 +23,7 @@ trait LazyEach
     {
         $page = 1;
 
-        $req = $this->listRequest(
+        $req = $this->paginatedRequest(
             $offset,
             $limit > $this->chunk ? $this->chunk : $limit
         );
@@ -49,7 +50,7 @@ trait LazyEach
 
     protected function listPage(int $page, int $offset, int $limit): Iterator
     {
-        $req = $this->listRequest($offset, $this->chunk);
+        $req = $this->paginatedRequest($offset, $this->chunk);
         $res = $this->sendRequest($req);
 
         $total = ($page - 1) * $this->chunk;

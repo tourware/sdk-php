@@ -5,3 +5,6 @@ phpcs.xml
 phpunit.xml
 .phpunit.result.cache
 .devcontainer
+
+ray.php
+index.php

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tourware\Contracts;
 
 use ArrayAccess;
+use Iterator;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -51,4 +52,7 @@ interface QueryBuilder
     public function total(): int;
 
     public function get(): ArrayAccess;
+
+    public function iterator():Iterator;
+
 }
