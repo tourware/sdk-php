@@ -3,15 +3,12 @@
 
 declare(strict_types=1);
 
-namespace Sigmie\Base\Shared;
+namespace Tourware\Shared;
 
 use Adbar\Dot;
 use Closure;
 use Iterator;
 use Psr\Http\Message\RequestInterface;
-use Sigmie\Base\Actions\Document as DocumentActions;
-use Sigmie\Base\APIs\Count;
-use Sigmie\Base\Documents\Document;
 
 trait LazyEach
 {
@@ -25,7 +22,11 @@ trait LazyEach
     {
         $page = 1;
 
-        $req = $this->listRequest($offset, $limit);
+        $req = $this->listRequest(
+            $offset,
+            $limit > $this->chunk ? $this->chunk : $limit
+        );
+
         $res = $this->sendRequest($req);
 
         $total = (int) $res['total'];
@@ -34,27 +35,32 @@ trait LazyEach
             yield $record;
         }
 
-        while ($this->chunk * $page < $total) {
+        while (($this->chunk * $page < $total) && ($this->chunk * $page) < $limit) {
 
             $page++;
 
-            yield from $this->listPage($page, $offset, $limit);
+            yield from $this->listPage(
+                $page,
+                $offset + (($page - 1) * $this->chunk),
+                $limit
+            );
         }
     }
 
     protected function listPage(int $page, int $offset, int $limit): Iterator
     {
-        $req = $this->listRequest($offset, $limit);
+        $req = $this->listRequest($offset, $this->chunk);
         $res = $this->sendRequest($req);
 
-        $body = [
-            'from' => ($page - 1) * $this->chunk,
-            'size' => $this->chunk,
-            'query' => ['match_all' => (object) []]
-        ];
+        $total = ($page - 1) * $this->chunk;
 
         foreach ($res['records'] as $record) {
-            yield $record;
+
+            if ($total < $limit) {
+                yield $record;
+            }
+
+            $total++;
         }
     }
 }
