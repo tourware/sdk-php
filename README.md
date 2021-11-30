@@ -5,7 +5,7 @@
 [![Build Status][ico-github]][link-github]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-Official PHP client for the tourware REST-API. Its goal is to provide common ground for all tourware©-related code in PHP.
+Official PHP client for the tourware© REST-API. Its goal is to provide common ground for all tourware©-related code in PHP.
 
 ## Install
 
