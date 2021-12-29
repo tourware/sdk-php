@@ -4,15 +4,18 @@ declare(strict_types=1);
 
 namespace Tourware;
 
+use Adbar\Dot;
 use ArrayAccess;
 use GuzzleHttp\Client as Http;
 use GuzzleHttp\Psr7\Stream;
+use Iterator;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\QueryBuilder as QueryBuilderInterface;
 use Tourware\Requests\QueryRequest;
 use Tourware\Shared\Filter;
+use Tourware\Shared\LazyEach;
 use Tourware\Shared\Limit;
 use Tourware\Shared\Offset;
 use Tourware\Shared\SendRequest;
@@ -25,6 +28,7 @@ class QueryBuilder implements QueryBuilderInterface
     use Offset;
     use Limit;
     use SendRequest;
+    use LazyEach;
 
     protected Http $http;
 
@@ -52,38 +56,43 @@ class QueryBuilder implements QueryBuilderInterface
 
     public function response(): ResponseInterface
     {
-        $request = $this->createRequest();
+        $request = $this->paginatedRequest($this->offset, $this->limit);
 
         return $this->http->sendRequest($request);
     }
 
     public function request(): RequestInterface
     {
-        return $this->createRequest();
+        return $this->paginatedRequest($this->offset, $this->limit);
     }
 
     public function total(): int
     {
-        $request = $this->createRequest();
+        $request = $this->paginatedRequest($this->offset, $this->limit);
 
         return $this->sendRequest($request)['total'];
     }
 
     public function get(): ArrayAccess
     {
-        $request = $this->createRequest();
+        $res = $this->listAll($this->offset, $this->limit);
 
-        return $this->sendRequest($request);
+        return dot(iterator_to_array($res, false));
     }
 
-    private function createRequest(): QueryRequest
+    public function iterator(): Iterator
+    {
+        return $this->listAll($this->offset, $this->limit);
+    }
+
+    private function paginatedRequest(int $offset, int $limit): RequestInterface
     {
         $request = new QueryRequest(
             $this->entity,
             $this->filters,
             $this->sort,
-            $this->offset,
-            $this->limit
+            $offset,
+            $limit
         );
 
         return (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);

@@ -5,15 +5,18 @@ declare(strict_types=1);
 namespace Tourware\Clients;
 
 use GuzzleHttp\Client as Http;
+use Iterator;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\QueryBuilder;
 use Tourware\Contracts\ReadClient as ReadClientInterface;
 use Tourware\QueryBuilder as TourwareQueryBuilder;
+use Tourware\Shared\LazyEach;
 use Tourware\Shared\ReadRequests;
 use Tourware\Shared\SendRequest;
 
 class ReadClient implements ReadClientInterface
 {
+    use LazyEach;
     use ReadRequests;
     use SendRequest;
 
@@ -38,11 +41,14 @@ class ReadClient implements ReadClientInterface
 
     public function list(int $offset = 0, int $limit = 50): ?array
     {
-        $request = $this->listRequest($offset, $limit);
+        $res = $this->listAll($offset, $limit);
 
-        $json = $this->sendRequest($request);
+        return iterator_to_array($res, false) ?? null;
+    }
 
-        return $json->get('records');
+    public function iterator(int $offset = 0, int $limit = 50): Iterator
+    {
+        return $this->listAll($offset, $limit);
     }
 
     public function query(): QueryBuilder

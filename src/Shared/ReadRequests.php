@@ -17,6 +17,7 @@ trait ReadRequests
     {
         self::$stream = $stream;
     }
+
     abstract protected function endpoint(): string;
 
     protected function showRequest(string $identifier): RequestInterface
@@ -26,7 +27,7 @@ trait ReadRequests
         return (is_null(self::$stream)) ? $request : $request->withBody(self::$stream);
     }
 
-    protected function listRequest(int $offset, int $limit): RequestInterface
+    protected function paginatedRequest(int $offset, int $limit): RequestInterface
     {
         $uri = new Uri("{$this->endpoint()}");
         $uri = Uri::withQueryValue($uri, 'limit', (string) $limit);
