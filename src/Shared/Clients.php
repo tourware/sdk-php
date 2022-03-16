@@ -15,6 +15,7 @@ use Tourware\Entities\Activities;
 use Tourware\Entities\AdditionalBookableService;
 use Tourware\Entities\AdditionalField;
 use Tourware\Entities\AdditionalType;
+use Tourware\Entities\Airline;
 use Tourware\Entities\Airport;
 use Tourware\Entities\Attribute;
 use Tourware\Entities\CloneStatus;
@@ -62,6 +63,7 @@ use Tourware\Entities\SupplierServicePeriod;
 use Tourware\Entities\SupplierServicePricingOption;
 use Tourware\Entities\Tag;
 use Tourware\Entities\Template;
+use Tourware\Entities\Text;
 use Tourware\Entities\Travel;
 use Tourware\Entities\TravelBrick;
 use Tourware\Entities\TravelBrickAccommodation;
@@ -80,6 +82,11 @@ trait Clients
     public function airports(): ReadClient
     {
         return (new Airport())->client($this->http);
+    }
+
+    public function airlines(): ReadClient
+    {
+        return (new Airline())->client($this->http);
     }
 
     public function language(): ReadClient
@@ -140,6 +147,11 @@ trait Clients
     public function accomondation(): WriteClient
     {
         return (new Accomondation())->client($this->http);
+    }
+
+    public function text(): WriteClient
+    {
+        return (new Text())->client($this->http);
     }
 
     public function additionalBookableService(): WriteClient
