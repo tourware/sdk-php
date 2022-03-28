@@ -35,6 +35,7 @@ class Custom
         $request = new Request(
             $this->method,
             $this->endpoint,
+            [],
             $this->body
         );
 
