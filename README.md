@@ -145,6 +145,12 @@ $travels = $client->travel()->query()->offset(5)->limit(20)->get();
 
 ```
 
+#### Custom endpoint
+In a lot of cases, you may want to send **custom** HTTP request to Tourware. You can do this by using the `custom` method on the `Client` class. 
+```php
+$relations = $client->custom("/relations/getRelations/travels/bba0b42e4699", 'GET')->call();
+```
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.

@@ -9,6 +9,7 @@ use Tourware\Auth\Headers;
 use Tourware\Contracts\Entity;
 use Tourware\Contracts\ReadClient;
 use Tourware\Contracts\WriteClient;
+use Tourware\Entities\Custom;
 use Tourware\Entities\Raw;
 use Tourware\Shared\Clients;
 
@@ -38,6 +39,11 @@ class Client
         $config = array_merge($config, $auth());
 
         return new static(new Http($config));
+    }
+
+    public function custom(string $endpoint, string $method, ?array $body = null): Custom
+    {
+        return new Custom($this->http, $endpoint, $method, $body);
     }
 
     public function raw(string $endpoint): WriteClient
