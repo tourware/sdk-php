@@ -17,10 +17,10 @@ class Custom
     use SendRequest;
 
     protected string $endpoint;
-
     protected string $method;
 
     protected ?array $body;
+    protected ?array $options;
 
     public function __construct(Http $http, string $endpoint, string $method, ?array $body = null)
     {
@@ -28,6 +28,12 @@ class Custom
         $this->body = $body;
         $this->endpoint = $endpoint;
         $this->method = $method;
+    }
+
+    public function setOptions($options)
+    {
+        $this->options = $options;
+        return $this;
     }
 
     public function call(): Dot
@@ -39,6 +45,6 @@ class Custom
             $this->body
         );
 
-        return $this->sendRequest($request);
+        return $this->sendRequest($request, $this->options);
     }
 }

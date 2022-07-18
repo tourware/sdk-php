@@ -41,9 +41,9 @@ class Client
         return new static(new Http($config));
     }
 
-    public function custom(string $endpoint, string $method, ?array $body = null): Custom
+    public function custom(string $endpoint, string $method, ?array $body = null, $headers = [], $options = []): Custom
     {
-        return new Custom($this->http, $endpoint, $method, $body);
+        return new Custom($this->http, $endpoint, $method, $body, $headers, $options);
     }
 
     public function raw(string $endpoint): WriteClient

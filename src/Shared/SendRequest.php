@@ -12,9 +12,9 @@ trait SendRequest
 {
     protected Http $http;
 
-    protected function sendRequest(RequestInterface $request): Dot
+    protected function sendRequest(RequestInterface $request, $options = []): Dot
     {
-        $contents = $this->http->sendRequest($request)->getBody()->getContents();
+        $contents = $this->http->send($request, $options)->getBody()->getContents();
 
         return dot(json_decode($contents, true));
     }
