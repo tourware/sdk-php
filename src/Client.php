@@ -55,4 +55,17 @@ class Client
     {
         return $entity->client($this->http);
     }
+
+    public function upload($filename, $content)
+    {
+        return $this->custom('/files/upload', 'post')->setOptions([
+            'multipart' => [
+                [
+                    'name'     => 'file',
+                    'contents' => $content,
+                    'filename' => $filename
+                ],
+            ]
+        ])->call()->get('records.0');
+    }
 }
