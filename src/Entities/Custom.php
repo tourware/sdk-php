@@ -28,6 +28,7 @@ class Custom
         $this->body = $body;
         $this->endpoint = $endpoint;
         $this->method = $method;
+        $this->options = [];
     }
 
     public function setOptions($options)
