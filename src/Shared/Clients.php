@@ -15,9 +15,14 @@ use Tourware\Entities\Activities;
 use Tourware\Entities\AdditionalBookableService;
 use Tourware\Entities\AdditionalField;
 use Tourware\Entities\AdditionalType;
+use Tourware\Entities\Agency;
+use Tourware\Entities\AgencyCommissionRule;
+use Tourware\Entities\AgencyCommissionSchema;
 use Tourware\Entities\Airline;
 use Tourware\Entities\Airport;
 use Tourware\Entities\Attribute;
+use Tourware\Entities\CancellationRule;
+use Tourware\Entities\CancellationSchema;
 use Tourware\Entities\CloneStatus;
 use Tourware\Entities\CloudImportConfig;
 use Tourware\Entities\Comment;
@@ -29,6 +34,7 @@ use Tourware\Entities\Destination;
 use Tourware\Entities\EmailTemplate;
 use Tourware\Entities\File;
 use Tourware\Entities\Filter;
+use Tourware\Entities\FlightSegment;
 use Tourware\Entities\Folder;
 use Tourware\Entities\Followup;
 use Tourware\Entities\Group;
@@ -45,6 +51,7 @@ use Tourware\Entities\OperationBookingService;
 use Tourware\Entities\OperationPassenger;
 use Tourware\Entities\OperationPayment;
 use Tourware\Entities\OperationRequest;
+use Tourware\Entities\OperationsBookingsServicesPaxPrice;
 use Tourware\Entities\Pois;
 use Tourware\Entities\PriceCategory;
 use Tourware\Entities\PriceGroup;
@@ -109,6 +116,21 @@ trait Clients
         return (new AdditionalType())->client($this->http);
     }
 
+    public function agency(): ReadClient
+    {
+        return (new Agency())->client($this->http);
+    }
+
+    public function agencyCommissionRule(): ReadClient
+    {
+        return (new AgencyCommissionRule())->client($this->http);
+    }
+
+    public function agencyCommissionSchema(): ReadClient
+    {
+        return (new AgencyCommissionSchema())->client($this->http);
+    }
+
     public function country(): ReadClient
     {
         return (new Country())->client($this->http);
@@ -169,6 +191,16 @@ trait Clients
         return (new Attribute())->client($this->http);
     }
 
+    public function cancellationRule(): ReadClient
+    {
+        return (new CancellationRule())->client($this->http);
+    }
+
+    public function cancellationSchema(): ReadClient
+    {
+        return (new CancellationSchema())->client($this->http);
+    }
+
     public function cloneStatus(): WriteClient
     {
         return (new CloneStatus())->client($this->http);
@@ -212,6 +244,11 @@ trait Clients
     public function filter(): WriteClient
     {
         return (new Filter())->client($this->http);
+    }
+
+    public function flightSegment(): ReadClient
+    {
+        return (new FlightSegment())->client($this->http);
     }
 
     public function folder(): WriteClient
@@ -282,6 +319,11 @@ trait Clients
     public function operationRequest(): WriteClient
     {
         return (new OperationRequest())->client($this->http);
+    }
+
+    public function operationsBookingsServicesPaxPrice(): ReadClient
+    {
+        return (new OperationsBookingsServicesPaxPrice())->client($this->http);
     }
 
     public function pois(): WriteClient
