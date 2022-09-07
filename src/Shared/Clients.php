@@ -43,6 +43,7 @@ use Tourware\Entities\Itineraryitem;
 use Tourware\Entities\ItineraryitemAccommodation;
 use Tourware\Entities\ItineraryitemService;
 use Tourware\Entities\Language;
+use Tourware\Entities\Me;
 use Tourware\Entities\MealType;
 use Tourware\Entities\NonBookableContent;
 use Tourware\Entities\OperationBooking;
@@ -85,6 +86,10 @@ use Tourware\Entities\VacationRentalPriceModification;
 
 trait Clients
 {
+    public function me(): ReadClient
+    {
+        return (new Me())->client($this->http);
+    }
 
     public function airports(): ReadClient
     {
