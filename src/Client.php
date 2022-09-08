@@ -68,4 +68,9 @@ class Client
             ]
         ])->call()->get('records.0');
     }
+
+    public function whoami()
+    {
+        return $this->custom('/me/whoami', 'get')->call();
+    }
 }
