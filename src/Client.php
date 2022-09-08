@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tourware;
 
+use Adbar\Dot;
 use GuzzleHttp\Client as Http;
 use Tourware\Auth\Headers;
 use Tourware\Contracts\Entity;
@@ -69,7 +70,7 @@ class Client
         ])->call()->get('records.0');
     }
 
-    public function whoami()
+    public function whoami(): Dot
     {
         return $this->custom('/me/whoami', 'get')->call();
     }
