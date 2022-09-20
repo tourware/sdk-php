@@ -29,6 +29,9 @@
         "symfony/var-dumper": "^5.2"
     },
     "autoload": {
+        "classmap": [
+            "src/"
+        ],
         "psr-4": {
             "Tourware\\": "src"
         }
