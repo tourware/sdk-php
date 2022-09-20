@@ -36,6 +36,9 @@
             "Tourware\\": "src"
         }
     },
+    "platform": {
+        "php": "7.4.30"
+    },
     "autoload-dev": {
         "psr-4": {
             "Tourware\\Tests\\": "tests"
