@@ -43,7 +43,7 @@ class Custom
             $this->method,
             $this->endpoint,
             [],
-            $this->body
+            is_array($this->body) ? json_encode($this->body) : $this->body
         );
 
         return $this->sendRequest($request, $this->options);
