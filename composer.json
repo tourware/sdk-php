@@ -18,8 +18,9 @@
     "require": {
         "php": "^7.3|^8.0",
         "adbario/php-dot-notation": "^3",
-        "guzzlehttp/guzzle": "^7.3"
-    },
+        "guzzlehttp/guzzle": "^7.3",
+				"ext-json": "*"
+		},
     "require-dev": {
         "brianium/paratest": "^6.3",
         "phpstan/phpstan": "^0.12.90",
