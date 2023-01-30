@@ -1,5 +1,4 @@
 build
-composer.lock
 vendor
 phpcs.xml
 phpunit.xml
@@ -8,3 +7,4 @@ phpunit.xml
 
 ray.php
 index.php
+composer.lock
