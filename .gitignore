@@ -7,3 +7,4 @@ phpunit.xml
 
 ray.php
 index.php
+composer.lock
