@@ -11,9 +11,9 @@ class GreaterThan implements Filter
 {
     protected string $property;
 
-    protected int $number;
+    protected string $number;
 
-    public function __construct(string $property, int $number)
+    public function __construct(string $property, string $number)
     {
         $this->property = $property;
         $this->number = $number;
