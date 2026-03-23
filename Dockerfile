@@ -1,6 +1,6 @@
 FROM php:7.4
 
-LABEL maintainer="Nico"
+LABEL maintainer="Simon Milz"
 
 ENV DEBIAN_FRONTEND noninteractive
 

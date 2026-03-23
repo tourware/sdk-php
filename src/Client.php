@@ -27,7 +27,7 @@ class Client
 
     public static function create(string $xApiKey, bool $staging = true)
     {
-        $url = $staging ? 'https://app-staging.tourware.net' : 'https://app.tourware.net';
+        $url = $staging ? 'https://app-staging.flowcore.cloud' : 'https://app.flowcore.cloud';
 
         $auth = new Headers($xApiKey);
         $config = [

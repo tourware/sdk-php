@@ -1,7 +1,7 @@
 {
     "name": "tourware/sdk-php",
     "type": "library",
-    "description": "PHP SDK for the Tourware API.",
+    "description": "PHP SDK for the flowcore API.",
     "keywords": [
         "tourware",
         "sdk-php"
@@ -10,8 +10,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Nico",
-            "email": "nico@tourware.com",
+            "name": "Simon Milz",
+            "email": "simon@milzer.de",
             "role": "Developer"
         }
     ],

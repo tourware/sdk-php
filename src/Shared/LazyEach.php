@@ -13,7 +13,7 @@ use Psr\Http\Message\RequestInterface;
 trait LazyEach
 {
     /**
-     * 300 is the Tourware API limit
+     * 300 is the flowcore API limit
      */
     protected int $chunk = 300;
 
