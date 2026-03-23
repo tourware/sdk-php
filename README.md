@@ -33,7 +33,7 @@ require 'vendor/autoload.php';
 ```php
 use tourware\Client;
 
-// Create a client for the tourware API (staging by default)
+// Create a client for the flowcore API (staging by default)
 $client = Client::create(
     xApiKey: 'YOUR_X_API_KEY'
 );

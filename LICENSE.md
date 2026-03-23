@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 
-Copyright (c) 2020 Nico <nico@tourware.com>
+Copyright (c) 2026 milzer GmbH, Simon Milz <simon@milzer.de>
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal
